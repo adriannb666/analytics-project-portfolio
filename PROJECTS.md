@@ -18,6 +18,6 @@ Prepared 2026-10-30. This table separates recovered source from descriptions, re
 | 12 | [Square-root Monte Carlo](research/sqrt-monte-carlo) | R fragments and inspected report | Final consolidated script still missing |
 | 13 | [Gold/Bitcoin strategy](research/gold-bitcoin-strategy) | Full historical Python backtest and MATLAB/LaTeX fragments | Python syntax checked; original data run and methodology not revalidated |
 | 14 | [Construction scheduling](research/construction-scheduling) | LaTeX report source | Standalone MATLAB implementation still missing |
-| 15 | [Bitcoin dynamic allocation](research/bitcoin-dynamic-allocation) | Confirmed project description | Original source still missing |
+| 15 | [Bitcoin dynamic allocation](research/bitcoin-dynamic-allocation) | Project description and two related constant-weight R experiments | R syntax checked; final Bellman implementation still missing |
 
 Supporting code: [Python fundamentals](practice/python-fundamentals), [R regression examples](practice/r-regression), [Python/Pine indicator conversions](practice/indicator-conversions), [MATLAB image arithmetic](practice/matlab-image-arithmetic), and [bilingual resume generation](tools/resume-generator).

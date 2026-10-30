@@ -14,9 +14,11 @@ The first pass missed earlier messages in long conversations. Scrolling back and
 
 Archived chats also supplied Python/Pine indicator-conversion implementations and dependent snippets, plus a MATLAB image-MSE exercise. These are included under `practice/` with attribution and limitations.
 
+Loading additional search-result pages then recovered two R scripts from a Bitcoin training/validation discussion. They contain constant-weight experiments and visualization, and are included in the capstone folder with their original modeling limitations. They do not establish recovery of the final Bellman model.
+
 ## Remaining gaps
 
-- Bitcoin dynamic-allocation capstone: description and methods confirmed; original implementation not recovered.
+- Bitcoin dynamic-allocation capstone: description and related constant-weight R scripts recovered; final Bellman implementation not recovered.
 - Construction scheduling: report source recovered; standalone MATLAB script not recovered.
 - Square-root Monte Carlo: component R code recovered; the final consolidated experiment file not recovered.
 - Some original datasets, expired attachments, hidden branches, and earlier versions may not be accessible through the current search.

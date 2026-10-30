@@ -29,7 +29,7 @@ Recovered historical source, partial source, and confirmed project descriptions:
 - [Fish tank dynamic programming](research/fish-tank-dp)
 - [Housing market statistical analysis](research/taipei-housing)
 
-Source is recovered for most research projects above. Some material consists of fragments or report source; the complete Bitcoin allocation implementation remains missing. The [project inventory](PROJECTS.md) records each distinction.
+Source is recovered for most research projects above. Some material consists of fragments or report source. The Bitcoin capstone folder now includes two related constant-weight R experiments; its final Bellman implementation remains missing. The [project inventory](PROJECTS.md) records each distinction.
 
 ## Supporting code
 

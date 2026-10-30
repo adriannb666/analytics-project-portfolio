@@ -16,6 +16,7 @@ Prepared 2026-10-30.
 - After automatic approval review identified source-linked workplace evidence, removed frozen record IDs, derived case tables, and related context mappings from public code; preserved methods and table schemas.
 
 - Parsed the newly recovered complete gold/Bitcoin Python backtest and archived indicator Python code. No historical market-data run was performed. Original risk-tail, estimation, allocation, and valuation limitations are documented in the strategy README.
+- Parsed both newly recovered Bitcoin training/validation R scripts using the installed R runtime. Their differing turnover/cost assumptions are documented; the historical market-data run was not reproduced.
 - Standardized public text copies to LF line endings and refreshed the SHA-256 manifest against the bytes published to GitHub. Original private source captures remain separate.
 
 ## Limits
