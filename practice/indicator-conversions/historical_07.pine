@@ -1,0 +1,47 @@
+//@version=6
+indicator("狙击指标（修复版）", overlay=false)
+
+// K线数据
+C = close
+H = high
+L = low
+O = open
+
+// KDJ计算
+RSV = (C - ta.lowest(L, 9)) / (ta.highest(H, 9) - ta.lowest(L, 9)) * 100
+K = ta.sma(RSV, 3)
+D = ta.sma(K, 3)
+J = 3 * K - 2 * D
+
+// VAR系列变量
+VAR0 = (C + L + H) / 1.5
+VAR1 = ta.ema(VAR0, 3)
+VAR2 = ta.ema(VAR1, 3)  // 原为2.5，Pine不支持浮点周期
+
+MA3 = ta.sma(C, 3)
+MA8 = ta.sma(C, 8)
+MA10 = ta.sma(C, 10)
+MA20 = ta.sma(C, 20)
+
+VAR3 = (C > MA3) and (MA3 > MA3[1]) and (MA8 > MA20) and (MA20 > MA20[1]) and (C > C[1]) and (L < MA8) and (C > MA8) and (MA10 > MA10[1])
+VAR4 = ta.crossover(VAR1, VAR2) and VAR3
+
+VAR5 = 100 * (C - C[12]) / C[12]
+VAR6 = ta.sma(VAR5, 6)
+
+VAR7 = (C > ta.sma(C, 5)) and (C > ta.sma(C, 10)) and (C > ta.sma(C, 20))
+VAR8 = (O < ta.sma(C, 5)) and (O < ta.sma(C, 10)) and (O < ta.sma(C, 20))
+VAR9 = (ta.sma(C, 5) > ta.sma(C, 5)[1]) and ((H / C) < 1.015)
+
+VAR10 = ta.crossover(J, K) and ((C / C[1]) > 1.03)
+VAR11 = ta.crossover(VAR5, VAR6) and (VAR5 > VAR5[1]) and (VAR5[1] > VAR5[2])
+VAR12 = (VAR5[2] < VAR5[3]) and (VAR5 > VAR5[3])
+
+VAR13 = (C[14] != O[14]) and (H[23] > C[23]) and (H[20] > C[20]) and (O[13] != H[13])
+VAR14 = (C[6] != O[6]) and (C[20] != O[20]) and (H[18] > C[18]) and (C[8] != O[8])
+VAR15 = (C[3] != O[3]) and (C[22] != O[22]) and (C[15] != O[15])
+
+sniper = VAR7 and VAR9 and VAR8 and VAR10 and VAR11 and VAR12 and VAR13 and VAR14 and VAR15 and VAR4
+
+// 绘图：信号出现时在副图标记三角形
+plotshape(sniper, title="狙击信号", location=location.belowbar, color=color.fuchsia, style=shape.triangleup, size=size.small)

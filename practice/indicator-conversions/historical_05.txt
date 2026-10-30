@@ -1,0 +1,1 @@
+VAR2 = ta.ema(VAR1, 3)  // 或者取整为 2，也可以 ta.ema(VAR1, int(2.5))

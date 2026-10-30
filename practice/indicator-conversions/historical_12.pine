@@ -1,0 +1,7 @@
+//@version=6
+indicator("黑龙狙击", overlay=true)
+
+// 基础变量
+var0 = (close + low + high) / 1.5
+var1 = ta.ema(var0, 3)
+var2 = ta.ema(var1, 3)  // 原为2.5，改为整数近似

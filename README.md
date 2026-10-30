@@ -35,6 +35,8 @@ Source is recovered for most research projects above. Some material consists of 
 
 - [Python fundamentals](practice/python-fundamentals)
 - [R regression examples](practice/r-regression)
+- [Historical Python/Pine indicator conversions](practice/indicator-conversions)
+- [MATLAB image arithmetic exercise](practice/matlab-image-arithmetic)
 - [Bilingual resume generation](tools/resume-generator)
 
 ## Reproduce and review

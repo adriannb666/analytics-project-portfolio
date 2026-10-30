@@ -1,0 +1,1 @@
+plot(sniper ? 1 : na, title="狙击触发", style=plot.style_columns, color=color.fuchsia)

@@ -4,6 +4,6 @@ These are distinct source blocks recovered from existing conversations. They inc
 
 | File | Language | Bytes |
 | --- | --- | --- |
-| [recovered_02.m](archive/recovered_02.m) | m | 4956 |
+| [recovered_02.m](archive/recovered_02.m) | m | 4934 |
 
 The original report source is held locally because publication review identified course-derived result details and third-party collaborator names. It is not included in the public archive.

@@ -1,0 +1,4 @@
+//@version=6
+indicator("测试信号", overlay=true)
+sig = close > open and close > close[1]
+plotshape(sig, location=location.abovebar, color=color.red, style=shape.triangledown)

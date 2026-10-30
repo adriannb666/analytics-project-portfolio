@@ -1,0 +1,7 @@
+//@version=6
+indicator("狙击指标", overlay=false)
+
+...
+
+VAR1 = ta.ema(VAR0, 3)
+VAR2 = ta.ema(VAR1, 3)  // 修改为整数版本

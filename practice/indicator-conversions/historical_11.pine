@@ -1,0 +1,39 @@
+//@version=5
+indicator("黑龙狙击", overlay=true)
+
+// 基础变量
+var0 = (close + low + high) / 1.5
+var1 = ta.ema(var0, 3)
+var2 = ta.ema(var1, 2.5)
+
+// 均线和中间条件
+ma3 = ta.sma(close, 3)
+ma8 = ta.sma(close, 8)
+ma10 = ta.sma(close, 10)
+ma20 = ta.sma(close, 20)
+
+var3 = (close > ma3) and (ma3 > ma3[1]) and (ma8 > ma20) and (ma20 > ma20[1]) and (close > close[1]) and (low < ma8) and (close > ma8) and (ma10 > ma10[1])
+var4 = ta.crossover(var1, var2) and var3
+
+var5 = (100 * (close - close[12])) / close[12]
+var6 = ta.sma(var5, 6)
+
+var7 = (close > ta.sma(close, 5)) and (close > ta.sma(close, 10)) and (close > ta.sma(close, 20))
+var8 = (open < ta.sma(close, 5)) and (open < ta.sma(close, 10)) and (open < ta.sma(close, 20))
+var9 = (ta.sma(close, 5) > ta.sma(close, 5)[1]) and ((high / close) < 1.015)
+
+// 模拟KDJ指标的 J 和 K
+j = ta.stoch(close, high, low, 14)
+k = ta.sma(j, 3)
+var10 = ta.crossover(j, k) and ((close / close[1]) > 1.03)
+
+var11 = ta.crossover(var5, var6) and (var5 > var5[1]) and (var5[1] > var5[2])
+var12 = (var5[2] < var5[3]) and (var5 > var5[3])
+
+var13 = (close[14] != open[14]) and (high[23] > close[23]) and (high[20] > close[20]) and (open[13] != high[13])
+var14 = (close[6] != open[6]) and (close[20] != open[20]) and (high[18] > close[18]) and (close[8] != open[8])
+var15 = (close[3] != open[3]) and (close[22] != open[22]) and (close[15] != open[15])
+
+signal = var7 and var9 and var8 and var10 and var11 and var12 and var13 and var14 and var15 and var4
+
+plotshape(signal, title="黑龙狙击信号", location=location.belowbar, color=color.fuchsia, style=shape.labelup, size=size.small)
