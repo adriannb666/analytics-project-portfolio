@@ -1,0 +1,220 @@
+//@version=6
+indicator("AD TVEM Bands V2 - Market Type Select", shorttitle="AD TVEM V2", overlay=true)
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Inputs
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+marketType = input.string(
+     defval="Auto",
+     title="Market Type",
+     options=["Auto", "Stocks", "Crypto"],
+     group="Market Settings"
+)
+
+vwapPeriod = input.string(
+     defval="Yearly",
+     title="VWAP Period",
+     options=["Yearly", "Quarterly", "Monthly"],
+     group="Market Settings"
+)
+
+emaTimeframe = input.string(
+     defval="1D",
+     title="EMA Timeframe",
+     options=["1D", "12H", "4H", "3D", "1W"],
+     group="EMA Settings"
+)
+
+emaPeriod = input.int(
+     defval=200,
+     title="EMA Period",
+     options=[12, 21, 50, 100, 200],
+     group="EMA Settings"
+)
+
+multiplierType = input.string(
+     defval="Fixed",
+     title="Multiplier Type",
+     options=["Fixed", "Percentage"],
+     group="Band Settings"
+)
+
+stdDevMultiplier = input.float(
+     defval=2.0,
+     title="Std Dev Multiplier",
+     minval=0.1,
+     group="Band Settings"
+)
+
+stdDevPercentage = input.float(
+     defval=5.0,
+     title="Std Dev Percentage",
+     minval=0.1,
+     maxval=100.0,
+     group="Band Settings"
+)
+
+stdDevLength = input.int(
+     defval=200,
+     title="StdDev Length",
+     minval=1,
+     group="Band Settings"
+)
+
+useLookahead = input.bool(
+     defval=false,
+     title="Use Lookahead?",
+     group="Advanced Settings"
+)
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Market Type Detection
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+isCryptoAuto = syminfo.type == "crypto"
+
+useCryptoLogic =
+     marketType == "Crypto" ? true :
+     marketType == "Stocks" ? false :
+     isCryptoAuto
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Custom Sum Function
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+my_sum(src, len) =>
+    cum_val = ta.cum(src)
+    cum_val - nz(cum_val[len])
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Lookback Bars Logic
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+// Crypto logic:
+// Uses actual calendar-day logic.
+// Example:
+// Daily chart: 365 days = 365 bars
+// 4H chart: 365 days = 2190 bars
+// 1H chart: 365 days = 8760 bars
+getCryptoLookbackBars(days) =>
+    secondsPerBar = timeframe.in_seconds(timeframe.period)
+    int(math.max(1, math.round(days * 24 * 60 * 60 / secondsPerBar)))
+
+// Stock logic:
+// Best for daily US stocks, ETFs, and indices.
+// Yearly ≈ 252 trading days
+// Quarterly ≈ 63 trading days
+// Monthly ≈ 21 trading days
+getStockLookbackBars(period) =>
+    period == "Yearly" ? 252 :
+     period == "Quarterly" ? 63 :
+     period == "Monthly" ? 21 : 252
+
+getLookbackBars(period) =>
+    if useCryptoLogic
+        period == "Yearly" ? getCryptoLookbackBars(365) :
+         period == "Quarterly" ? getCryptoLookbackBars(90) :
+         period == "Monthly" ? getCryptoLookbackBars(30) :
+         getCryptoLookbackBars(365)
+    else
+        getStockLookbackBars(period)
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Trailing VWAP Calculation
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+trailingVWAPByBars(len) =>
+    sumPV = my_sum(close * volume, len)
+    sumV  = my_sum(volume, len)
+    sumV != 0 ? sumPV / sumV : na
+
+lookbackBars = getLookbackBars(vwapPeriod)
+selectedVWAP = trailingVWAPByBars(lookbackBars)
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Multi-Timeframe EMA Calculation
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+getEma(tf, period) =>
+    request.security(
+         syminfo.tickerid,
+         tf,
+         ta.ema(close, period),
+         lookahead = useLookahead ? barmerge.lookahead_on : barmerge.lookahead_off
+     )
+
+float ema = na
+
+if emaTimeframe == "1D"
+    ema := getEma("D", emaPeriod)
+else if emaTimeframe == "12H"
+    ema := getEma("720", emaPeriod)
+else if emaTimeframe == "4H"
+    ema := getEma("240", emaPeriod)
+else if emaTimeframe == "3D"
+    ema := getEma("3D", emaPeriod)
+else if emaTimeframe == "1W"
+    ema := getEma("W", emaPeriod)
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Average Line
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+averageLine = not na(ema) and not na(selectedVWAP) ? (selectedVWAP + ema) / 2 : na
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Bands Calculation
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+stdDev = ta.stdev(averageLine, stdDevLength)
+
+float upperBand = na
+float lowerBand = na
+
+if multiplierType == "Fixed"
+    upperBand := averageLine + stdDevMultiplier * stdDev
+    lowerBand := averageLine - stdDevMultiplier * stdDev
+else
+    upperBand := averageLine + averageLine * stdDevPercentage / 100
+    lowerBand := averageLine - averageLine * stdDevPercentage / 100
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Plot
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+p1 = plot(
+     averageLine,
+     color=color.blue,
+     title="Average Line",
+     linewidth=2
+)
+
+p2 = plot(
+     upperBand,
+     color=color.green,
+     title="Upper Band",
+     linewidth=1
+)
+
+p3 = plot(
+     lowerBand,
+     color=color.red,
+     title="Lower Band",
+     linewidth=1
+)
+
+fill(
+     p2,
+     p3,
+     color=color.new(color.purple, 90),
+     title="Band Fill"
+)
+
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// AD Watermark
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+var table ADWatermark = table.new(position.bottom_right, 1, 1)
+
+if barstate.islast
+    table.cell(
+         ADWatermark,
+         0,
+         0,
+         "Adriannb",
+         text_color=color.white,
+         text_size=size.normal,
+         bgcolor=color.orange
+     )

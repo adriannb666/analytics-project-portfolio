@@ -1,0 +1,272 @@
+{
+  "name": "TradeJournal",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "enum": [
+        "manual",
+        "position_monitor",
+        "exchange_fill"
+      ],
+      "default": "manual"
+    },
+    "platform": {
+      "type": "string"
+    },
+    "connection_id": {
+      "type": "string"
+    },
+    "exchange_trade_id": {
+      "type": "string"
+    },
+    "fill_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fill_price": {
+      "type": "number"
+    },
+    "fill_quantity": {
+      "type": "number"
+    },
+    "trade_value": {
+      "type": "number"
+    },
+    "leverage": {
+      "type": "number"
+    },
+    "trading_plan_id": {
+      "type": "string"
+    },
+    "pre_trade_check_id": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "asset_name": {
+      "type": "string"
+    },
+    "market": {
+      "type": "string"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "long",
+        "short"
+      ]
+    },
+    "setup_type": {
+      "type": "string"
+    },
+    "trade_source": {
+      "type": "string"
+    },
+    "trade_thesis": {
+      "type": "string"
+    },
+    "planned_entry_price": {
+      "type": "number"
+    },
+    "planned_stop_price": {
+      "type": "number"
+    },
+    "planned_target_price": {
+      "type": "number"
+    },
+    "planned_position_size": {
+      "type": "number"
+    },
+    "position_input_type": {
+      "type": "string",
+      "enum": [
+        "quantity",
+        "notional"
+      ],
+      "default": "quantity"
+    },
+    "dca_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "dca_batches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "price": {
+            "type": "number"
+          },
+          "ratio": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "account_equity": {
+      "type": "number"
+    },
+    "planned_risk_amount": {
+      "type": "number"
+    },
+    "planned_risk_percent": {
+      "type": "number"
+    },
+    "planned_reward_risk": {
+      "type": "number"
+    },
+    "actual_entry_price": {
+      "type": "number"
+    },
+    "actual_exit_price": {
+      "type": "number"
+    },
+    "actual_position_size": {
+      "type": "number"
+    },
+    "initial_quantity": {
+      "type": "number"
+    },
+    "current_quantity": {
+      "type": "number"
+    },
+    "opened_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "closed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fees": {
+      "type": "number"
+    },
+    "pnl_amount": {
+      "type": "number"
+    },
+    "pnl_percent": {
+      "type": "number"
+    },
+    "r_multiple": {
+      "type": "number"
+    },
+    "max_favorable_r": {
+      "type": "number"
+    },
+    "max_adverse_r": {
+      "type": "number"
+    },
+    "compliance_status": {
+      "type": "string",
+      "enum": [
+        "compliant",
+        "warning",
+        "violation",
+        "unchecked"
+      ],
+      "default": "unchecked"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exception_reason": {
+      "type": "string"
+    },
+    "execution_adherence": {
+      "type": "string",
+      "enum": [
+        "full",
+        "mostly",
+        "partial",
+        "severe"
+      ]
+    },
+    "execution_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trade_quality_score": {
+      "type": "number"
+    },
+    "what_went_well": {
+      "type": "string"
+    },
+    "what_to_improve": {
+      "type": "string"
+    },
+    "trade_reason": {
+      "type": "string"
+    },
+    "trade_result": {
+      "type": "string"
+    },
+    "error_summary": {
+      "type": "string"
+    },
+    "emotion": {
+      "type": "string",
+      "enum": [
+        "calm",
+        "hesitant",
+        "fomo",
+        "impatient",
+        "revenge"
+      ]
+    },
+    "would_take_again": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "unsure"
+      ]
+    },
+    "lessons_learned": {
+      "type": "string"
+    },
+    "next_action_rule": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "planned",
+        "open",
+        "completed",
+        "closed",
+        "cancelled"
+      ],
+      "default": "draft"
+    }
+  },
+  "required": [
+    "symbol",
+    "direction"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

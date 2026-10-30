@@ -1,0 +1,57 @@
+{
+  "name": "PlanProfile",
+  "type": "object",
+  "properties": {
+    "trading_plan_id": {
+      "type": "string"
+    },
+    "trading_experience": {
+      "type": "string"
+    },
+    "daily_screen_time": {
+      "type": "string"
+    },
+    "days_per_week": {
+      "type": "string"
+    },
+    "available_sessions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "preferred_currency": {
+      "type": "string"
+    },
+    "capital_bracket": {
+      "type": "string"
+    },
+    "income_dependency": {
+      "type": "string"
+    },
+    "account_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "other_account_type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "trading_plan_id"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

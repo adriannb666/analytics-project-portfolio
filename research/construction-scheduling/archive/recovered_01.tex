@@ -1,0 +1,177 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Optimal Control Final Project\\
+\large Project Scheduling for Constructing a Biogas Plant using Critical Path Method (CPM)}
+\author{Jiangnan Ni \and Yitian Zhang \and Youhui Pang}
+\date{May 9, 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This report explores the application of the Critical Path Method (CPM) in scheduling the construction of a 50 m\textsuperscript{3} fixed-dome biogas plant. We present the mathematical formulation of the CPM algorithm, demonstrate a simplified numerical example, replicate the results from a referenced study using MATLAB, and reflect on the relationship between CPM and optimal control theory.
+\end{abstract}
+
+\section{Introduction}
+The global demand for sustainable energy has driven interest in biogas technology, particularly in rural areas where organic waste is abundant. However, constructing a biogas plant involves many interdependent tasks and potential delays. Project scheduling, therefore, becomes critical. In this study, we examine the use of the Critical Path Method (CPM) for modeling and managing such projects, based on the approach introduced in Zareei (2018).
+
+\section{Methodology}
+
+\subsection{Forward and Backward Pass}
+The Critical Path Method uses a forward and backward pass through a task network to compute scheduling bounds:
+
+\textbf{Forward Pass:}
+\[
+\text{ES}_j = \max(\text{EF}_i), \quad \text{EF}_j = \text{ES}_j + D_j
+\]
+
+\textbf{Backward Pass:}
+\[
+\text{LF}_i = \min(\text{LS}_j), \quad \text{LS}_i = \text{LF}_i - D_i
+\]
+
+where $ES$ and $EF$ are earliest start and finish times, $LS$ and $LF$ are latest start and finish times, and $D$ is the task duration.
+
+\subsection{Slack Time and Critical Path}
+Slack time is defined as:
+\[
+\text{Slack} = LS - ES = LF - EF
+\]
+Activities with zero slack form the critical path, which determines the total duration of the project.
+
+\section{Numerical Example}
+We consider a simplified network consisting of the following activities:
+
+\begin{itemize}
+    \item A: Duration = 4
+    \item B: Depends on A, Duration = 2
+    \item C: Depends on A, Duration = 5
+    \item D: Depends on B and C, Duration = 3
+\end{itemize}
+
+\textbf{Forward Pass:}
+\[
+ES_A = 0, \quad EF_A = 4
+\]
+\[
+ES_B = 4, \quad EF_B = 6 \quad ; \quad ES_C = 4, \quad EF_C = 9
+\]
+\[
+ES_D = \max(6,9) = 9, \quad EF_D = 12
+\]
+
+\textbf{Backward Pass:}
+\[
+LF_D = 12, \quad LS_D = 9
+\]
+\[
+LF_B = 9, \quad LS_B = 7 \quad ; \quad LF_C = 9, \quad LS_C = 4
+\]
+\[
+LF_A = \min(7,4) = 4, \quad LS_A = 0
+\]
+
+\textbf{Slack:} A and C are on the critical path.
+
+\section{Case Study – Zareei Biogas Project (with Correction of Path Misidentification)}
+In this section, we apply the Critical Path Method (CPM) to the biogas project described by Samira Zareei (2018). The project involves 15 activities related to planning, construction, and operational readiness for a biogas plant, which are connected through a directed Activity-on-Node (AON) network.
+
+Using the activity list, durations, and predecessor relationships provided in Zareei's Table (Figure~\ref{fig:table}) and Figure (Figure~\ref{fig:2}), we implemented a MATLAB model to perform forward and backward passes. This generated the earliest start (ES), earliest finish (EF), latest start (LS), and latest finish (LF) times for each activity, as well as slack and critical path indicators.
+
+According to our calculations, the total project duration is 38 weeks. Two valid critical paths were identified:
+
+A → C → D → E → G → H → K → L → M → N → O
+
+A → C → D → F → G → H → K → L → M → N → O
+
+These paths are consistent with the network structure and timing logic, as each activity on the path has zero slack.
+
+However, the original paper reports four critical paths, including the following two additional ones:
+
+A → C → D → E → G → H → K → L → M → O
+
+A → C → D → F → G → H → K → L → M → O
+
+Upon detailed analysis, we found these additional paths to be invalid.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{table1.png}
+    \caption{Table 1 List of activities for project scheduling of biogas plant construction and computational results using CPM. }
+    \label{fig:table}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{Fig.3.png}
+    \caption{Biogas plant construction project CPM network model. }
+    \label{fig:2}
+\end{figure}
+
+We first identified an inconsistency in Table (Figure~\ref{fig:table}) of the original paper. It states that the predecessors of activity O are "N, O", which implies a self-dependency that is logically impossible. To correct this, we assumed the intended predecessors were "N, M" based on the project flow. Even with this correction, our time-driven CPM analysis revealed that activity N is a time-critical predecessor to O.
+
+While Figure~\ref{fig:2} from the original paper shows two incoming arrows to activity O (from M and N), our CPM calculations show that O's earliest start time is dictated by the latest of its predecessors' finish times (Figure~\ref{fig:corrected_cpm}). Specifically, EF(M) = 34, EF(N) = 36, and thus ES(O) = max\{34, 36\} = 36. Consequently, skipping activity N would result in activity O starting at week 34, which is too early, causing non-zero slack in the path.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{matlab_output_corrected.png}
+    \caption{MATLAB output showing corrected activity times and the only two valid critical paths. 
+    Note that activities M and N both precede O, but EF(N) = 36 causes O to start at week 36, 
+    disqualifying the M→O-only path as critical.}
+    \label{fig:corrected_cpm}
+\end{figure}
+We further confirmed this using a simulated path that bypasses N. The total duration of A → C → D → E → G → H → K → L → M → O is only 36 weeks, two weeks shorter than the full project duration. Therefore, these paths finish early and cannot be classified as critical.
+
+This correction demonstrates the importance of validating graphical network logic with time-driven computations in CPM. By cross-verifying dependencies, timing windows, and slack, our model not only reproduced most of the numerical results in Zareei's Table 1 but also resolved a logical inconsistency in the reported critical paths and activity dependency structure.
+
+ 
+
+\section{MATLAB Implementation and Results}
+
+
+\subsection*{5.2 MATLAB Implementation}
+
+To support our CPM analysis and verify the logical consistency of Zareei's model, we implemented the full critical path scheduling algorithm in MATLAB. The implementation consists of several key components:
+
+\begin{itemize}
+    \item \textbf{Activity Definition}: Activities, durations, and dependencies are stored in structured arrays and maps to allow efficient lookup during graph traversal.
+    
+    \item \textbf{Forward Pass}: We compute the earliest start (ES) and earliest finish (EF) for each activity by propagating the maximum EF of all its predecessors. This ensures that no activity can begin until all required inputs are complete.
+    
+    \item \textbf{Backward Pass}: We compute the latest start (LS) and latest finish (LF) for each activity by traversing the graph in reverse and finding the minimum LS of all successors.
+    
+    \item \textbf{Slack and Criticality}: Slack is calculated as LS minus ES. Activities with zero slack are marked as critical.
+    
+    \item \textbf{Recursive Critical Path Finder}: To identify all critical paths, a recursive depth-first search is implemented that only traverses critical activities and collects all valid end-to-end paths from the start node (A) to the final node (O).
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{skip.png}
+    \caption{MATLAB logical simulation}
+    \label{fig:4}
+\end{figure}
+
+In addition, we included a logical simulation to test whether skipping activity N (i.e., directly taking the path M~$\rightarrow$~O) could produce a critical path. The simulation results confirm that although M~$\rightarrow$~O exists in the network graph, it leads to early completion of O at week 36, introducing slack and disqualifying the path as critical (Figure~\ref{fig:4}). This result is illustrated in Figure~\ref{fig:corrected_cpm}, where only paths passing through N satisfy the project duration constraint.
+
+\section{Conclusion and Reflection}
+The Critical Path Method proved to be a reliable tool for managing complex construction schedules. By combining mathematical structure with practical scheduling needs, CPM bridges the gap between theory and application. Furthermore, its forward/backward structure mirrors the dynamic programming ideas central to optimal control theory. This project reinforced our understanding of CPM as a discrete optimal control approach for real-world projects.
+
+\begin{thebibliography}{9}
+\bibitem{zareei2018}
+Zareei, S. (2018). Project scheduling for constructing biogas plant using critical path method. \textit{Renewable and Sustainable Energy Reviews}, 81, 756--759.
+\end{thebibliography}
+
+\section*{AI Usage Statement}
+
+We used ChatGPT to help organize our project structure, divide tasks fairly among group members, and format the LaTeX report. 
+
+
+\end{document}
+请你将我的部分使用LaTeX code打出来，使用英语

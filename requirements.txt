@@ -1,0 +1,12 @@
+pandas
+numpy
+matplotlib
+ipython
+ipywidgets
+nbformat
+nbclient
+python-docx
+reportlab
+pypdf
+pypdfium2
+Pillow

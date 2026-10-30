@@ -1,0 +1,100 @@
+{
+  "name": "TradingPlan",
+  "type": "object",
+  "properties": {
+    "plan_name": {
+      "type": "string",
+      "default": "\u6211\u7684\u4ea4\u6613\u8ba1\u5212"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "default": "v1.0"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "completed"
+      ],
+      "default": "draft"
+    },
+    "current_step": {
+      "type": "string",
+      "default": "0"
+    },
+    "completeness_score": {
+      "type": "number",
+      "default": 0
+    },
+    "unresolved_flags_count": {
+      "type": "number",
+      "default": 0
+    },
+    "step_0_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_1_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_2_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_3_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_4_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_5_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_6_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_7_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "step_8_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "coherence_check_completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "export_ready": {
+      "type": "boolean",
+      "default": false
+    },
+    "last_generated_date": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "plan_name"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

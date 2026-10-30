@@ -1,0 +1,39 @@
+{
+  "name": "GeneratedPlan",
+  "type": "object",
+  "properties": {
+    "trading_plan_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "full_plan_content": {
+      "type": "string"
+    },
+    "desk_card_content": {
+      "type": "string"
+    },
+    "checklist_content": {
+      "type": "string"
+    },
+    "generated_date": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "trading_plan_id"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

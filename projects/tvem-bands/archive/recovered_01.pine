@@ -1,0 +1,109 @@
+//@version=6
+indicator("AD - Trailing VWAP, Variable EMA, and StdDev Bands with % Option", shorttitle="AD TVEM Bands", overlay=true)
+
+// VWAP period selection
+vwapPeriod = input.string("Yearly", "VWAP Period", options=["Yearly", "Quarterly", "Monthly"])
+
+// Timeframe and StdDev options for EMA calculation
+emaTimeframe     = input.string("1D", "EMA Timeframe", options=["1D", "12H", "4H", "3D", "1W"])
+emaPeriod        = input.int(200, "EMA Period", options=[12, 21, 50, 100, 200])
+multiplierType   = input.string("Fixed", "Multiplier Type", options=["Fixed", "Percentage"])
+stdDevMultiplier = input.float(2.0, "Std Dev Multiplier", minval=0.1)
+stdDevPercentage = input.float(5.0, "Std Dev Percentage", minval=0.1, maxval=100.0)
+
+// Repaint control
+useLookahead = input.bool(false, "Use Lookahead?")
+
+///////////////////////////////////////////////////////////////
+// Custom summing function
+my_sum(src, len) =>
+    cum_val = ta.cum(src)
+    cum_val - nz(cum_val[len])
+
+///////////////////////////////////////////////////////////////
+// Stable lookback bars
+// For daily stock charts:
+// Yearly ≈ 252 trading days
+// Quarterly ≈ 63 trading days
+// Monthly ≈ 21 trading days
+getLookbackBars(period) =>
+    period == "Yearly" ? 252 :
+     period == "Quarterly" ? 63 :
+     period == "Monthly" ? 21 : 252
+
+///////////////////////////////////////////////////////////////
+// Trailing VWAP Calculation by fixed trading bars
+trailingVWAPByBars(len) =>
+    sumPV = my_sum(close * volume, len)
+    sumV  = my_sum(volume, len)
+    sumV != 0 ? sumPV / sumV : na
+
+lookbackBars = getLookbackBars(vwapPeriod)
+selectedVWAP = trailingVWAPByBars(lookbackBars)
+
+///////////////////////////////////////////////////////////////
+// EMA Calculation on selectable timeframe
+getEma(tf, period) =>
+    request.security(
+         syminfo.tickerid,
+         tf,
+         ta.ema(close, period),
+         lookahead = useLookahead ? barmerge.lookahead_on : barmerge.lookahead_off
+     )
+
+float ema = na
+
+if emaTimeframe == "1D"
+    ema := getEma("D", emaPeriod)
+else if emaTimeframe == "12H"
+    ema := getEma("720", emaPeriod)
+else if emaTimeframe == "4H"
+    ema := getEma("240", emaPeriod)
+else if emaTimeframe == "3D"
+    ema := getEma("3D", emaPeriod)
+else if emaTimeframe == "1W"
+    ema := getEma("W", emaPeriod)
+
+///////////////////////////////////////////////////////////////
+// Average Line
+averageLine = (not na(ema) and not na(selectedVWAP)) ? (selectedVWAP + ema) / 2 : na
+
+///////////////////////////////////////////////////////////////
+// Standard deviation
+length = input.int(200, "StdDev Length", minval=1)
+stdDev = ta.stdev(averageLine, length)
+
+///////////////////////////////////////////////////////////////
+// Upper and Lower Bands
+float upperBand = na
+float lowerBand = na
+
+if multiplierType == "Fixed"
+    upperBand := averageLine + stdDevMultiplier * stdDev
+    lowerBand := averageLine - stdDevMultiplier * stdDev
+else
+    upperBand := averageLine + averageLine * stdDevPercentage / 100
+    lowerBand := averageLine - averageLine * stdDevPercentage / 100
+
+///////////////////////////////////////////////////////////////
+// Plot
+p1 = plot(averageLine, color=color.blue, title="Average Line", linewidth=2)
+p2 = plot(upperBand, color=color.green, title="Upper Band", linewidth=1)
+p3 = plot(lowerBand, color=color.red, title="Lower Band", linewidth=1)
+
+fill(p2, p3, color=color.new(color.purple, 90), title="Band Fill")
+
+///////////////////////////////////////////////////////////////
+// AD Watermark
+var table ADWatermark = table.new(position.bottom_right, 1, 1)
+
+if barstate.islast
+    table.cell(
+         ADWatermark,
+         0,
+         0,
+         "Adriannb",
+         text_color=color.white,
+         text_size=size.normal,
+         bgcolor=color.orange
+     )

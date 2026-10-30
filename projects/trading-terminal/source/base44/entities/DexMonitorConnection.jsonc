@@ -1,0 +1,59 @@
+{
+  "name": "DexMonitorConnection",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "string",
+      "enum": [
+        "hyperliquid",
+        "lighter"
+      ]
+    },
+    "account_name": {
+      "type": "string"
+    },
+    "wallet_address": {
+      "type": "string"
+    },
+    "lighter_account_index": {
+      "type": "number"
+    },
+    "lighter_subaccount_type": {
+      "type": "string"
+    },
+    "trading_plan_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "error",
+        "disabled"
+      ],
+      "default": "active"
+    },
+    "last_synced_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_error": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "platform"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

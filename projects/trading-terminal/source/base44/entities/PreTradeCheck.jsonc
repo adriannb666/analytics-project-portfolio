@@ -1,0 +1,152 @@
+{
+  "name": "PreTradeCheck",
+  "type": "object",
+  "properties": {
+    "trading_plan_id": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "asset_name": {
+      "type": "string"
+    },
+    "market": {
+      "type": "string"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "long",
+        "short"
+      ]
+    },
+    "setup_type": {
+      "type": "string"
+    },
+    "trade_source": {
+      "type": "string"
+    },
+    "planned_entry_price": {
+      "type": "number"
+    },
+    "planned_stop_price": {
+      "type": "number"
+    },
+    "planned_target_price": {
+      "type": "number"
+    },
+    "position_input_type": {
+      "type": "string",
+      "enum": [
+        "quantity",
+        "notional"
+      ],
+      "default": "quantity"
+    },
+    "planned_position_size": {
+      "type": "number"
+    },
+    "dca_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "dca_batches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "price": {
+            "type": "number"
+          },
+          "ratio": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "account_equity": {
+      "type": "number"
+    },
+    "planned_risk_amount": {
+      "type": "number"
+    },
+    "planned_risk_percent": {
+      "type": "number"
+    },
+    "planned_reward_risk": {
+      "type": "number"
+    },
+    "trade_thesis": {
+      "type": "string"
+    },
+    "checklist_results": {
+      "type": "object"
+    },
+    "passed_count": {
+      "type": "number",
+      "default": 0
+    },
+    "warning_count": {
+      "type": "number",
+      "default": 0
+    },
+    "violation_count": {
+      "type": "number",
+      "default": 0
+    },
+    "consistency_score": {
+      "type": "number",
+      "default": 0
+    },
+    "compliance_status": {
+      "type": "string",
+      "enum": [
+        "compliant",
+        "warning",
+        "violation",
+        "unchecked"
+      ],
+      "default": "unchecked"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "violations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exception_reason": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "completed"
+      ],
+      "default": "draft"
+    }
+  },
+  "required": [
+    "symbol",
+    "direction"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "name": "Briefing",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "briefing_type": {
+      "type": "string",
+      "enum": [
+        "week_ahead",
+        "week_review",
+        "daily"
+      ]
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "global_markets_content": {
+      "type": "string"
+    },
+    "digital_assets_content": {
+      "type": "string"
+    },
+    "key_events": {
+      "type": "string"
+    },
+    "bottom_line": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published",
+        "archived"
+      ],
+      "default": "draft"
+    }
+  },
+  "required": [
+    "title",
+    "briefing_type"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

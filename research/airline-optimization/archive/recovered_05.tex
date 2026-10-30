@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Optimization Project Report: Universal Airways Fleet Expansion}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+This report details the optimization of Universal Airways' fleet expansion plan. The goal is to maximize daily profit by determining how many planes of two types (Med-848 and Smal-286) to purchase and how to allocate them to four destinations (Metropolis, Cityburg, Smalltown, and Townville). The problem is formulated as a linear programming model, with the constraint that each aircraft must meet daily flight time limits, budget restrictions, and mandated minimum flights to specific destinations.
+
+\section*{Problem Formulation}
+
+\subsection*{Decision Variables}
+We define the following decision variables:
+\begin{itemize}
+    \item $x_{11}, x_{12}, x_{13}, x_{14}$: Number of daily flights by the Med-848 to Metropolis, Cityburg, Smalltown, and Townville, respectively.
+    \item $x_{21}, x_{22}, x_{23}, x_{24}$: Number of daily flights by the Smal-286 to Metropolis, Cityburg, Smalltown, and Townville, respectively.
+    \item $y_1$: Number of Med-848 planes purchased.
+    \item $y_2$: Number of Smal-286 planes purchased.
+\end{itemize}
+
+\subsection*{Objective Function}
+The objective is to maximize the daily profit, defined as the difference between revenue and cost for each flight. For Med-848 and Smal-286 planes, the profits are calculated based on the provided cost and revenue data for each route. The objective function is:
+
+\[
+\max \left( 10,400 \cdot x_{11} + 6,700 \cdot x_{12} - 2,400 \cdot x_{13} - 400 \cdot x_{14} + 4,000 \cdot x_{21} + 3,200 \cdot x_{22} + 400 \cdot x_{23} + 1,600 \cdot x_{24} \right)
+\]
+
+\subsection*{Constraints}
+The problem is subject to the following constraints:
+\begin{itemize}
+    \item \textbf{Budget constraint}: 
+    \[
+    21 \cdot y_1 + 7 \cdot y_2 \leq 160
+    \]
+    \item \textbf{Flight time constraints}:
+    \[
+    4.2 \cdot x_{11} + 3.2 \cdot x_{12} + 1.6 \cdot x_{13} + 2.2 \cdot x_{14} \leq 10 \cdot y_1
+    \]
+    \[
+    5.2 \cdot x_{21} + 3.7 \cdot x_{22} + 1.8 \cdot x_{23} + 2.6 \cdot x_{24} \leq 10 \cdot y_2
+    \]
+    \item \textbf{Minimum flight constraints}:
+    \[
+    x_{13} + x_{23} \geq 3
+    \]
+    \[
+    x_{14} + x_{24} \geq 4
+    \]
+    \item \textbf{Maximum trip constraints}:
+    \[
+    x_{11} + x_{21} \leq 8, \quad x_{12} + x_{22} \leq 13, \quad x_{13} + x_{23} \leq 13, \quad x_{14} + x_{24} \leq 12
+    \]
+    \item \textbf{Non-negativity constraint}: 
+    All decision variables must be non-negative:
+    \[
+    x_{ij}, y_1, y_2 \geq 0
+    \]
+\end{itemize}
+
+\section*{MATLAB Implementation}
+The optimization problem was solved using MATLAB's \texttt{intlinprog} function, which ensures that the decision variables are integers. The MATLAB code used for this project is provided below:
+
+\begin{verbatim}
+% Coefficients for the objective function (negative profit)
+f = [-10400, -6700, 2400, 400, -4000, -3200, -400, -1600, 0, 0];
+
+% Coefficients for inequality constraints (A * x <= b)
+A = [
+    4.2, 3.2, 1.6, 2.2, 0, 0, 0, 0, -10, 0;  % Med-848 flight time
+    0, 0, 0, 0, 5.2, 3.7, 1.8, 2.6, 0, -10;  % Smal-286 flight time
+    0, 0, 0, 0, 0, 0, 0, 0, 21, 7;           % Budget constraint
+    1, 0, 0, 0, 1, 0, 0, 0, 0, 0;            % Max Metropolis flights
+    0, 1, 0, 0, 0, 1, 0, 0, 0, 0;            % Max Cityburg flights
+    0, 0, 1, 0, 0, 0, 1, 0, 0, 0;            % Max Smalltown flights
+    0, 0, 0, 1, 0, 0, 0, 1, 0, 0;            % Max Townville flights
+];
+
+b = [0; 0; 160; 8; 13; 13; 12];  % Inequality right-hand side
+
+% Equality constraints (Aeq * x = beq)
+Aeq = [
+    0, 0, 1, 0, 0, 0, 1, 0, 0, 0;  % Smalltown min trips
+    0, 0, 0, 1, 0, 0, 0, 1, 0, 0;  % Townville min trips
+];
+
+beq = [3; 4];  % Equality right-hand side
+
+% Lower bounds (non-negativity constraint)
+lb = zeros(10,1);
+
+% Specify integer variables (all variables should be integers)
+intcon = 1:10;
+
+% Solve using intlinprog
+[x_opt, fval] = intlinprog(f, intcon, A, b, Aeq, beq, lb);
+
+% Display results
+Med848_flights = x_opt(1:4)
+Smal286_flights = x_opt(5:8)
+Med848_planes = x_opt(9)
+Smal286_planes = x_opt(10)
+Profit = -fval
+\end{verbatim}
+
+\section*{Results}
+The optimization model returned the following results:
+\begin{itemize}
+    \item \textbf{Med-848 Flights}:
+    \[
+    x_{11} = 8, \quad x_{12} = 8, \quad x_{13} = 0, \quad x_{14} = 0
+    \]
+    \item \textbf{Smal-286 Flights}:
+    \[
+    x_{21} = 0, \quad x_{22} = 5, \quad x_{23} = 3, \quad x_{24} = 4
+    \]
+    \item \textbf{Planes Purchased}:
+    \[
+    y_1 = 6 \quad (\text{Med-848 planes}), \quad y_2 = 4 \quad (\text{Smal-286 planes})
+    \]
+    \item \textbf{Profit}:
+    \[
+    \text{Maximum Daily Profit} = \$160,400
+    \]
+\end{itemize}
+
+\section*{Conclusion}
+Based on the results of the optimization, Universal Airways should purchase 6 Med-848 planes and 4 Smal-286 planes. The flights should be allocated as follows:
+\begin{itemize}
+    \item 8 Med-848 flights to Metropolis and 8 Med-848 flights to Cityburg.
+    \item 5 Smal-286 flights to Cityburg, 3 to Smalltown, and 4 to Townville.
+\end{itemize}
+This solution maximizes daily profit while satisfying all constraints, resulting in a profit of \$160,400 per day.
+
+\end{document}

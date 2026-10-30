@@ -1,0 +1,95 @@
+{
+  "name": "DexPositionSnapshot",
+  "type": "object",
+  "properties": {
+    "connection_id": {
+      "type": "string"
+    },
+    "account_snapshot_id": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "long",
+        "short"
+      ]
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "entry_price": {
+      "type": "number"
+    },
+    "mark_price": {
+      "type": "number"
+    },
+    "notional_value": {
+      "type": "number"
+    },
+    "leverage": {
+      "type": "number"
+    },
+    "margin_mode": {
+      "type": "string"
+    },
+    "unrealized_pnl": {
+      "type": "number"
+    },
+    "unrealized_pnl_percent": {
+      "type": "number"
+    },
+    "liquidation_price": {
+      "type": "number"
+    },
+    "liquidation_distance_percent": {
+      "type": "number"
+    },
+    "detected_stop_price": {
+      "type": "number"
+    },
+    "stop_coverage_status": {
+      "type": "string",
+      "enum": [
+        "full",
+        "partial",
+        "none",
+        "unknown"
+      ]
+    },
+    "account_equity_percent": {
+      "type": "number"
+    },
+    "compliance_status": {
+      "type": "string",
+      "enum": [
+        "compliant",
+        "warning",
+        "violation"
+      ]
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "connection_id",
+    "symbol"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

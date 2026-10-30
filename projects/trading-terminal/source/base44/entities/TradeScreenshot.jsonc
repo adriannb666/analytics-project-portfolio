@@ -1,0 +1,40 @@
+{
+  "name": "TradeScreenshot",
+  "type": "object",
+  "properties": {
+    "trade_journal_id": {
+      "type": "string"
+    },
+    "screenshot_type": {
+      "type": "string",
+      "enum": [
+        "before",
+        "during",
+        "after"
+      ]
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "caption": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "trade_journal_id",
+    "screenshot_type",
+    "file_url"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

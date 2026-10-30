@@ -1,0 +1,59 @@
+\section*{4. Results}
+
+The optimization process yielded clear and actionable insights for Universal Airways. Based on the constraints provided, such as flight time limits, budget, and mandatory flight requirements, the results of the analysis are as follows:
+
+\begin{itemize}
+    \item \textbf{Med-848 Flights}: 
+    The Med-848 planes, being the more expensive but higher-revenue aircraft, are allocated to routes that generate significant profit and can accommodate a higher number of passengers per flight. The results show that:
+    \[
+    x_{11} = 8, \quad x_{12} = 8, \quad x_{13} = 0, \quad x_{14} = 0
+    \]
+    This indicates that the Med-848 planes should be fully utilized on the Metropolis and Cityburg routes, which are the most profitable destinations. However, there are no Med-848 flights allocated to Smalltown and Townville, likely because the demand and profitability of these routes are lower and better suited for the smaller Smal-286 planes.
+    
+    \item \textbf{Smal-286 Flights}:
+    The Smal-286 planes, which are less expensive and more suited for shorter routes with lower passenger demand, are primarily allocated to routes where profitability is lower but still mandated by operational requirements:
+    \[
+    x_{21} = 0, \quad x_{22} = 5, \quad x_{23} = 3, \quad x_{24} = 4
+    \]
+    The Smal-286 planes are used to service Cityburg, Smalltown, and Townville. Notably, 5 daily flights are assigned to Cityburg, which balances the overall demand in this popular destination. Meanwhile, Smalltown receives 3 flights, and Townville receives 4 flights, meeting the mandatory flight requirements set for these regions.
+
+    \item \textbf{Planes Purchased}:
+    The optimal number of planes to purchase is determined based on the fleet's ability to service all routes while staying within the operational limits of the aircraft and budget constraints:
+    \[
+    y_1 = 6 \quad (\text{Med-848 planes}), \quad y_2 = 4 \quad (\text{Smal-286 planes})
+    \]
+    Universal Airways should purchase 6 Med-848 planes and 4 Smal-286 planes to operate its expanded fleet. This allocation allows for the maximum utilization of both types of aircraft while staying within the \$160 million budget. The higher number of Med-848 planes reflects the airline's need to prioritize more profitable long-haul routes, while the smaller Smal-286 planes will serve shorter, less profitable routes efficiently.
+
+    \item \textbf{Profit}:
+    The total daily profit achieved through this optimal allocation of planes and flights is:
+    \[
+    \text{Maximum Daily Profit} = \$160,400
+    \]
+    This profit represents the maximum potential earnings the airline can expect to generate daily, given the current flight schedules and fleet composition. The model takes into account operational costs and revenues for each route, ensuring that the airline achieves the highest possible profitability.
+\end{itemize}
+
+\section*{5. Conclusion}
+
+The optimization model provides Universal Airways with a clear plan for fleet expansion and route allocation. Based on the analysis, we recommend the following:
+
+\begin{itemize}
+    \item **Purchase 6 Med-848 planes**: These planes are best utilized on routes to Metropolis and Cityburg, which are the most profitable destinations for the airline. The allocation of 8 daily flights to each of these cities ensures maximum revenue generation from the high-demand routes.
+    
+    \item **Purchase 4 Smal-286 planes**: These planes are more suited for servicing routes with lower demand and shorter distances. Five flights to Cityburg, three to Smalltown, and four to Townville effectively meet the operational requirements and provide service to regions with lower population densities.
+    
+    \item **Flight Allocation**: The flight allocation balances the airline's goal of maximizing profit while satisfying mandatory service requirements. The Med-848 planes will be fully utilized on the high-demand, high-revenue routes, while the Smal-286 planes will efficiently service the less profitable, shorter routes.
+\end{itemize}
+
+This plan allows Universal Airways to maximize its daily profit while adhering to budgetary and operational constraints. The optimization process ensures that the fleet expansion is both cost-effective and capable of meeting the company’s goals for increased service to new destinations.
+
+### Future Work:
+While this model provides an optimal solution for fleet expansion under the given constraints, future work could further refine the model by incorporating additional factors. For instance:
+\begin{itemize}
+    \item **Demand Uncertainty**: Passenger demand may fluctuate over time due to seasonal changes, economic conditions, or unforeseen events. Incorporating demand uncertainty into the model could help the airline better anticipate and adapt to these changes.
+    
+    \item **Fuel Price Volatility**: Fuel costs are a significant part of airline operating expenses. Including fuel price volatility in the model could provide more accurate profit projections and allow for better strategic planning.
+    
+    \item **Environmental Regulations**: With increasing global focus on environmental sustainability, future models could factor in carbon emissions or other environmental regulations, which may affect the cost and operation of certain aircraft.
+\end{itemize}
+
+By considering these factors, Universal Airways can further optimize its operations and remain competitive in a rapidly changing market.

@@ -1,0 +1,32 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Synthetic demo · 人工核查</title>
+<style>body{font:16px/1.65 system-ui,"Microsoft YaHei",sans-serif;background:#f3f5fa;color:#202b40;margin:0}main{max-width:1000px;margin:auto;padding:30px}h1{font-size:30px}article{background:white;border:1px solid #dce2ee;border-radius:14px;margin:24px 0;padding:24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:15px/1.75 system-ui;max-height:420px;overflow:auto;border:1px solid #dce2ee;padding:16px;border-radius:7px}fieldset{display:inline-block;vertical-align:top;margin:8px 10px 12px 0;border:1px solid #dce2ee;border-radius:8px;min-width:190px}label{cursor:pointer;margin-right:15px}input[type=text],textarea{font:inherit;border:1px solid #c5cede;border-radius:5px;padding:8px;box-sizing:border-box}textarea{display:block;width:100%;min-height:70px}button{background:#6954d8;color:white;border:0;border-radius:8px;font:inherit;padding:13px 20px;cursor:pointer}.note{background:#fff3d7;padding:16px;border-radius:10px}.toolbar{position:sticky;bottom:0;background:#fff;padding:18px;border-top:1px solid #ccd5e5}#message{color:#94331c}.tag{color:#6954d8;font-weight:700}summary{cursor:pointer;font-weight:bold}.definition{background:#eef8f6;padding:12px;border-radius:8px}</style>
+<main><h1>Synthetic demo：人工核查6条记录</h1><p class="note">请先读每条全文，再判断三个主题是否包含相关雇佣机会或员工体验。不是判断公司好坏。页面离线运行，无外部请求；关闭或刷新前请先下载结果。</p>
+<div class="definition"><b>Career：</b>培训、导师、技能成长、晋升或职业路径。<br><b>Flex / workload：</b>办公地点、工时、旅行、轮班、工作量或工作生活平衡。<br><b>Compensation / benefits：</b>工资、奖金、保险、假期等薪酬福利。<br><b>1=有相关内容；0=没有。</b>仅技术词义、客户培训职责不算向员工提供机会。一般宣传和条件式政策请在备注中区分；员工评价中的积极/消极/混合体验也请备注，不要只看pros/cons字段名。无法确定时与组员讨论后再导出。</div>
+<p>核查人：<input id="reviewer" type="text" placeholder="填写你的姓名"></p><div id="records"></div><div class="toolbar"><button id="download">下载这6条核查结果 CSV</button><p id="message"></p></div></main>
+<script>
+const rows=[{"source": "synthetic", "source_id": "1", "company": "Example employer", "title": "Synthetic example", "date": "", "full_text": "A fictional role offers a named mentor."}, {"source": "synthetic", "source_id": "2", "company": "Example employer", "title": "Synthetic example", "date": "", "full_text": "A fictional employee describes limited learning time."}, {"source": "synthetic", "source_id": "3", "company": "Example employer", "title": "Synthetic example", "date": "", "full_text": "A fictional employer describes paid leave."}, {"source": "synthetic", "source_id": "4", "company": "Example employer", "title": "Synthetic example", "date": "", "full_text": "A fictional role lists flexible hours."}, {"source": "synthetic", "source_id": "5", "company": "Example employer", "title": "Synthetic example", "date": "", "full_text": "A fictional employee describes project-based learning."}, {"source": "synthetic", "source_id": "6", "company": "Example employer", "title": "Synthetic example", "date": "", "full_text": "A fictional role provides no employment details."}];
+const fields=[['career','Career / 职业发展'],['flex','Flex / 工作安排与工作量'],['benefits','Compensation / 薪酬福利']];
+const container=document.getElementById('records');
+rows.forEach((row,i)=>{
+ const article=document.createElement('article');
+ const tag=document.createElement('div');tag.className='tag';tag.textContent=`${i+1}/6 · ${row.source} · ID ${row.source_id}`;article.append(tag);
+ const title=document.createElement('h2');title.textContent=row.company+' / '+row.title;article.append(title);
+ const detail=document.createElement('details');detail.open=true;const summary=document.createElement('summary');summary.textContent='阅读完整原文';detail.append(summary);const text=document.createElement('pre');text.textContent=row.full_text;detail.append(text);article.append(detail);
+ fields.forEach(([key,label])=>{const group=document.createElement('fieldset');const legend=document.createElement('legend');legend.textContent=label;group.append(legend);[1,0].forEach(value=>{const l=document.createElement('label');const input=document.createElement('input');input.type='radio';input.name=`${i}_${key}`;input.value=value;l.append(input,document.createTextNode(value===1?'1 有':'0 无'));group.append(l)});article.append(group)});
+ const note=document.createElement('textarea');note.id='note_'+i;note.placeholder='备注：具体支持/一般宣传/职责/条件政策；积极/消极/混合体验；有疑问的表述。';article.append(note);
+ const checkedLabel=document.createElement('label');const checked=document.createElement('input');checked.type='checkbox';checked.id='checked_'+i;checkedLabel.append(checked,document.createTextNode('我已读过全文并核对三个主题'));article.append(checkedLabel);container.append(article);
+});
+document.getElementById('download').onclick=()=>{
+ const name=document.getElementById('reviewer').value.trim();const message=document.getElementById('message');
+ if(!name){message.textContent='请填写核查人姓名。';return;}
+ const out=[];
+ for(let i=0;i<rows.length;i++){
+  if(!document.getElementById('checked_'+i).checked){message.textContent=`第${i+1}条尚未确认阅读全文。`;return;}
+  const row={...rows[i]};
+  for(const [key] of fields){const selected=document.querySelector(`input[name="${i}_${key}"]:checked`);if(!selected){message.textContent=`第${i+1}条的${key}还没选择。`;return;}row[key+'_human']=selected.value;}
+  row.human_checked='yes';row.reviewer_name=name;row.interpretation_notes=document.getElementById('note_'+i).value.trim();out.push(row);
+ }
+ const keys=Object.keys(out[0]);const quote=v=>'"'+String(v??'').replaceAll('"','""')+'"';const csv='\uFEFF'+[keys.map(quote).join(','),...out.map(row=>keys.map(key=>quote(row[key])).join(','))].join('\r\n');
+ const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const link=document.createElement('a');link.href=url;link.download='synthetic_review.csv';link.click();URL.revokeObjectURL(url);message.style.color='#247a53';message.textContent='已下载。把CSV交给汇总人或发回ChatGPT即可。';
+};
+</script></html>

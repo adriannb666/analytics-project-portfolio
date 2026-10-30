@@ -1,0 +1,79 @@
+{
+  "name": "DexAccountSnapshot",
+  "type": "object",
+  "properties": {
+    "connection_id": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "hyperliquid",
+        "lighter"
+      ]
+    },
+    "account_equity": {
+      "type": "number"
+    },
+    "available_balance": {
+      "type": "number"
+    },
+    "margin_used": {
+      "type": "number"
+    },
+    "unrealized_pnl": {
+      "type": "number"
+    },
+    "positions_count": {
+      "type": "number",
+      "default": 0
+    },
+    "gross_notional": {
+      "type": "number"
+    },
+    "long_notional": {
+      "type": "number"
+    },
+    "short_notional": {
+      "type": "number"
+    },
+    "effective_leverage": {
+      "type": "number"
+    },
+    "largest_position_percent": {
+      "type": "number"
+    },
+    "drawdown_percent": {
+      "type": "number"
+    },
+    "risk_status": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "cautious",
+        "high",
+        "pause"
+      ]
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "connection_id",
+    "platform"
+  ],
+  "rls": {
+    "create": true,
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

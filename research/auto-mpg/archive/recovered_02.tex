@@ -1,0 +1,351 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title{Regularized Least Squares for Auto MPG Prediction}
+\subtitle{Math 325 Final Project}
+\author{Adrian Zhang \and Jacob Pu \and Viktor Liu}
+\date{}
+
+\begin{document}
+
+% Slide 1
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Slide 2
+\begin{frame}{Project Goal}
+
+Our project applies ordinary least squares and Tikhonov regularization to the Auto MPG dataset.
+
+\medskip
+
+The main goal is to predict automobile fuel efficiency, measured by miles per gallon (MPG).
+
+\medskip
+
+We compare:
+
+\[
+\text{Ordinary Least Squares}
+\]
+
+and
+
+\[
+\text{Regularized Least Squares / Tikhonov Regularization}
+\]
+
+\end{frame}
+
+% Slide 3
+\begin{frame}{Dataset}
+
+We use the Auto MPG dataset.
+
+\medskip
+
+The response variable is:
+
+\[
+b = \text{MPG}
+\]
+
+The predictor variables are:
+
+\[
+\text{cylinders, displacement, horsepower, weight, acceleration}
+\]
+
+\medskip
+
+In matrix form:
+
+\[
+A x \approx b
+\]
+
+where \(A\) is the predictor matrix and \(x\) is the coefficient vector.
+
+\end{frame}
+
+% Slide 4
+\begin{frame}{Research Questions}
+
+\begin{enumerate}
+    \item Which model gives better prediction performance for MPG?
+    \item Does regularization improve model stability when predictors are correlated?
+    \item How does the choice of \(\lambda\) affect the final result?
+\end{enumerate}
+
+\end{frame}
+
+% Slide 5
+\begin{frame}{Ordinary Least Squares}
+
+Ordinary least squares minimizes the squared error:
+
+\[
+J(x) = \|Ax - b\|^2
+\]
+
+The normal equation is:
+
+\[
+A^T A \hat{x} = A^T b
+\]
+
+If \(A^T A\) is invertible, the solution is:
+
+\[
+\hat{x}_{OLS} = (A^T A)^{-1}A^T b
+\]
+
+\end{frame}
+
+% Slide 6
+\begin{frame}{Tikhonov Regularization}
+
+Tikhonov regularization adds a penalty term:
+
+\[
+J(x)=\frac{1}{2}\|Ax-b\|^2+\frac{\lambda}{2}\|x\|^2
+\]
+
+The regularized normal equation is:
+
+\[
+(A^TA+\lambda I)\hat{x}=A^Tb
+\]
+
+So the solution is:
+
+\[
+\hat{x}_{ridge}=(A^TA+\lambda I)^{-1}A^Tb
+\]
+
+\end{frame}
+
+% Slide 7
+\begin{frame}{Why Regularization Helps}
+
+Ordinary least squares only tries to minimize prediction error.
+
+\medskip
+
+Tikhonov regularization balances two goals:
+
+\[
+\text{small prediction error}
+\]
+
+and
+
+\[
+\text{small coefficient size}
+\]
+
+\medskip
+
+A larger \(\lambda\) gives stronger regularization.
+
+\medskip
+
+But if \(\lambda\) is too large, the model may underfit the data.
+
+\end{frame}
+
+% Slide 8
+\begin{frame}{Implementation}
+
+We used MATLAB to fit both models.
+
+\medskip
+
+Main steps:
+
+\begin{enumerate}
+    \item Load the Auto MPG dataset.
+    \item Remove missing values.
+    \item Use MPG as the response variable.
+    \item Standardize the predictor variables.
+    \item Split the data into training and testing sets.
+    \item Compare OLS and Ridge models using test RMSE.
+\end{enumerate}
+
+\end{frame}
+
+% Slide 9
+\begin{frame}{RMSE Comparison}
+
+The main performance metric is RMSE:
+
+\[
+RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(b_i-\hat{b}_i)^2}
+\]
+
+A lower RMSE means better prediction performance.
+
+\medskip
+
+\begin{table}
+\centering
+\begin{tabular}{lc}
+\toprule
+Model & Test RMSE \\
+\midrule
+OLS & 4.1424 \\
+Ridge, \(\lambda=0.001\) & 4.1424 \\
+Ridge, \(\lambda=0.01\) & 4.1424 \\
+Ridge, \(\lambda=0.1\) & 4.1425 \\
+Ridge, \(\lambda=1\) & 4.1428 \\
+Ridge, \(\lambda=10\) & 4.1484 \\
+Ridge, \(\lambda=100\) & 4.2347 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+% Slide 10
+\begin{frame}{RMSE Plot from MATLAB}
+
+\begin{center}
+    \includegraphics[width=0.78\textwidth]{rmse_plot.png}
+\end{center}
+
+\medskip
+
+\centering
+{\small Replace \texttt{rmse\_plot.png} with the MATLAB RMSE figure.}
+
+\end{frame}
+
+% Slide 11
+\begin{frame}{Coefficient Comparison}
+
+\begin{table}
+\centering
+\begin{tabular}{lcc}
+\toprule
+Variable & OLS Coefficient & Best Ridge Coefficient \\
+\midrule
+Intercept & 23.486 & 23.486 \\
+Cylinders & -0.62675 & -0.62674 \\
+Displacement & -0.015291 & -0.015426 \\
+Horsepower & -2.1755 & -2.1755 \\
+Weight & -4.1397 & -4.1396 \\
+Acceleration & -0.46348 & -0.46348 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\medskip
+
+The best Ridge model uses a very small value of \(\lambda\), so its coefficients are almost the same as OLS.
+
+\end{frame}
+
+% Slide 12
+\begin{frame}{Actual MPG vs Predicted MPG}
+
+\begin{center}
+    \includegraphics[width=0.72\textwidth]{prediction_plot.png}
+\end{center}
+
+\medskip
+
+\centering
+{\small Replace \texttt{prediction\_plot.png} with the MATLAB prediction figure.}
+
+\end{frame}
+
+% Slide 13
+\begin{frame}{Interpretation of Results}
+
+The OLS model has test RMSE:
+
+\[
+RMSE_{OLS}=4.1424
+\]
+
+The best Ridge model has:
+
+\[
+\lambda = 0.001
+\]
+
+\[
+RMSE_{ridge}=4.1424
+\]
+
+\medskip
+
+So in this train-test split, regularization does not significantly improve prediction accuracy.
+
+\end{frame}
+
+% Slide 14
+\begin{frame}{Effect of \(\lambda\)}
+
+When \(\lambda\) is very small:
+
+\[
+A^TA+\lambda I \approx A^TA
+\]
+
+So Ridge is almost the same as OLS.
+
+\medskip
+
+When \(\lambda\) becomes too large, the penalty term becomes stronger:
+
+\[
+\frac{\lambda}{2}\|x\|^2
+\]
+
+This shrinks the coefficients too much and can cause underfitting.
+
+\end{frame}
+
+% Slide 15
+\begin{frame}{Main Conclusion}
+
+For the Auto MPG dataset:
+
+\begin{itemize}
+    \item OLS and Ridge have almost the same best test RMSE.
+    \item The best regularization parameter is very small.
+    \item Large values of \(\lambda\) increase RMSE.
+    \item Tikhonov regularization mainly shows the stability trade-off rather than a large accuracy improvement.
+\end{itemize}
+
+\medskip
+
+In summary:
+
+\[
+\text{Regularization improves stability, but too much regularization hurts prediction.}
+\]
+
+\end{frame}
+
+% Slide 16
+\begin{frame}{Questions}
+
+\centering
+\Large Thank you.
+
+\medskip
+
+Questions?
+
+\end{frame}
+
+\end{document}

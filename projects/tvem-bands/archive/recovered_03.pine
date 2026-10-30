@@ -1,0 +1,10 @@
+//@version=6
+indicator("AD TVEM Bands V2 - Market Type Select", shorttitle="AD TVEM V2", overlay=true)
+
+// Market type selection
+marketType = input.string(
+     defval="Auto",
+     title="Market Type",
+     options=["Auto", "Stocks", "Crypto"],
+     group="Market Settings"
+)

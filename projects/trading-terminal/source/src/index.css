@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 16% 7%;
+    --foreground: 0 0% 96%;
+    --card: 222 14% 10%;
+    --card-foreground: 0 0% 96%;
+    --popover: 222 14% 11%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 38 90% 52%;
+    --primary-foreground: 222 16% 7%;
+    --secondary: 222 14% 14%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 222 14% 13%;
+    --muted-foreground: 220 10% 58%;
+    --accent: 222 14% 16%;
+    --accent-foreground: 0 0% 96%;
+    --destructive: 0 72% 52%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 60% 44%;
+    --success-foreground: 0 0% 98%;
+    --warning: 45 93% 55%;
+    --warning-foreground: 222 16% 7%;
+    --info: 205 20% 58%;
+    --info-foreground: 0 0% 98%;
+    --border: 222 12% 18%;
+    --input: 222 12% 18%;
+    --ring: 38 90% 52%;
+    --chart-1: 38 90% 52%;
+    --chart-2: 142 60% 44%;
+    --chart-3: 197 37% 40%;
+    --chart-4: 45 93% 55%;
+    --chart-5: 0 72% 52%;
+    --radius: 0.25rem;
+    --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 222 16% 9%;
+    --sidebar-foreground: 220 10% 65%;
+    --sidebar-primary: 38 90% 52%;
+    --sidebar-primary-foreground: 222 16% 7%;
+    --sidebar-accent: 222 14% 14%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 222 12% 16%;
+    --sidebar-ring: 38 90% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+.md-body {
+  color: hsl(var(--foreground));
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.md-body h1 { font-size: 1.4rem; font-weight: 700; margin: 0.5rem 0 1rem; }
+.md-body h2 { font-size: 1.05rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: hsl(var(--primary)); border-bottom: 1px solid hsl(var(--border)); padding-bottom: 0.25rem; }
+.md-body h3 { font-size: 0.95rem; font-weight: 600; margin: 0.75rem 0 0.25rem; }
+.md-body p { margin: 0.4rem 0; }
+.md-body ul { margin: 0.4rem 0; padding-left: 1.25rem; list-style: disc; }
+.md-body ol { margin: 0.4rem 0; padding-left: 1.25rem; list-style: decimal; }
+.md-body li { margin: 0.2rem 0; }
+.md-body table { width: 100%; border-collapse: collapse; margin: 0.6rem 0; font-size: 0.8rem; }
+.md-body th, .md-body td { border: 1px solid hsl(var(--border)); padding: 0.3rem 0.5rem; text-align: left; }
+.md-body th { background: hsl(var(--muted)); }
+.md-body strong { font-weight: 600; }
+.md-body code { font-family: var(--font-mono); font-size: 0.85em; }
+.md-body hr { border: none; border-top: 1px solid hsl(var(--border)); margin: 0.75rem 0; }
+
+@media print {
+  body * { visibility: hidden !important; }
+  .print-area, .print-area * { visibility: visible !important; }
+  .print-area { position: absolute; left: 0; top: 0; width: 100%; padding: 16px; }
+  .no-print { display: none !important; }
+}
+
+@layer utilities {
+  .select-none { -webkit-user-select: none; user-select: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+/* 全局隐藏滚动条（保留滚动能力，仅去掉可见滑块） */
+* { scrollbar-width: none; }
+*::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+html, body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+.safe-top { padding-top: env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+@media (max-width: 767px) {
+  .mobile-tap { min-height: 44px; min-width: 44px; }
+}
+
+/* iOS: prevent accidental text selection on interactive chrome */
+button, a, header, nav, [role="tab"], [role="button"], .mobile-tap {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* keep copy-paste available for trading plan output / markdown content */
+.md-body, .md-body *, .print-area, .print-area * {
+  -webkit-user-select: text;
+  user-select: text;
+}

@@ -1,0 +1,7 @@
+//@version=6
+indicator(
+     "AD TVEM Bands V3 - Stable VWAP",
+     shorttitle="AD TVEM V3",
+     overlay=true,
+     max_bars_back=5000
+)

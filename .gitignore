@@ -1,0 +1,29 @@
+# Credentials and local settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+node_modules/
+dist/
+venv/
+.venv/
+# Authorized datasets and generated artifacts stay local
+data/
+league_of_page_data/
+analysis_outputs/
+preprocess_outputs/
+final_submission_output/
+output/
+tmp/
+*.csv
+*.xlsx
+*.parquet
+*.zip
+*.pdf
+*.docx
