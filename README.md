@@ -1,8 +1,8 @@
-# Yitian (Adrian) Zhang | Analytics and Decision Projects
+# Yitian (Adrian) Zhang | Analytics & Quantitative Research Portfolio
 
-Applied mathematics and business analytics projects connecting data, quantitative models, and practical decisions. This public portfolio combines recovered source code with concise project summaries and explicit evidence limits.
+Applied mathematics, business analytics, and quantitative research projects connecting data, models, and practical decisions. Explore the project summaries, methods, source code, and reproduction notes below.
 
-[中文说明](README.zh-CN.md) · [15-project inventory](PROJECTS.md) · [Source recovery status](RECOVERY_STATUS.md) · [Validation](VALIDATION.md) · [Data and attribution](DATA_POLICY.md)
+[All 15 projects](PROJECTS.md) · [Source availability](RECOVERY_STATUS.md) · [Validation](VALIDATION.md) · [Data and attribution](DATA_POLICY.md)
 
 ## Featured projects
 
@@ -44,3 +44,5 @@ Source is recovered for most research projects above. Some material consists of 
 Python dependencies are in `requirements.txt`; application dependencies are in the terminal's `package.json` and lockfile. Read the relevant project README for data paths and environment requirements. Restricted datasets and live account data are not bundled.
 
 Team contributions and AI assistance are disclosed. Historical simulations, keyword counts, and source snapshots are presented with their original limits; this archive does not claim independently verified investment performance or causal business impact.
+
+English is the primary language for this portfolio and its project documentation. An optional [Chinese translation](README.zh-CN.md) is available. Historical source files retain their original comments and labels.

@@ -1,3 +1,7 @@
+> **English portfolio:** [Open the main portfolio](README.md) · [View all 15 projects in English](PROJECTS.md)
+>
+> This file is an optional Chinese translation. The primary portfolio and project documentation are in English.
+
 # 张逸天 Yitian (Adrian) Zhang｜项目作品集
 
 整理应用数学、商业分析、文本分析、量化决策和交易工具项目，保留可找到的历史源码，并说明每个项目的成果、团队背景与复现条件。

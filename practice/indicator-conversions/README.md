@@ -1,6 +1,6 @@
 # Historical indicator conversion source
 
-Recovered from two archived June 2025 conversations. These are AI-assisted adaptations of a user-supplied external formula historically called 黑龙狙击 / 狙击. Original authorship of that formula is not claimed. The source `.fml` database and conversation text are not bundled.
+Recovered from two archived June 2025 conversations. These are AI-assisted adaptations of a user-supplied external formula historically called Black Dragon Sniper (Heilong Juji), or Sniper. Original authorship of that formula is not claimed. The source `.fml` database and conversation text are not bundled.
 
 | File | Material |
 | --- | --- |
