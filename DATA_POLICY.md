@@ -10,6 +10,8 @@ No blanket license is granted over team work, datasets, or third-party software.
 
 Frozen review/job identifiers and employer-specific case-row claims embedded in source were removed from public copies after publication review. Only generic methods and empty evidence-table schemas remain.
 
-Frozen review/job identifiers and employer-specific case-row claims embedded in source were removed from public copies after publication review. Only generic methods and empty evidence-table schemas remain.
-
 A loan-model report source containing course-derived results and collaborator names is retained locally, rather than published. The public code uses a configurable input path, and resume templates generalize its result figures.
+
+## Public data that is included
+
+The crypto market project publishes a derived copy of public Coin Metrics data and the query results (see [THIRD_PARTY.md](THIRD_PARTY.md)). The airline project publishes model outputs computed from the textbook case parameters in its source code.

@@ -1,0 +1,6 @@
+asset,asset_name,as_of,latest_price_usd,ath_date,ath_price_usd,pct_below_ath,days_since_ath
+ADA,Cardano,2026-05-23,0.2458,2021-09-02,2.9655,-91.7,1724
+DOGE,Dogecoin,2026-05-23,0.103,2021-05-07,0.6853,-85.0,1842
+XRP,XRP,2026-05-23,1.3578,2025-07-21,3.5544,-61.8,306
+ETH,Ethereum,2026-05-23,2116.17,2025-08-22,4831.1,-56.2,274
+BTC,Bitcoin,2026-05-23,76619.9,2025-10-06,124824.0,-38.6,229

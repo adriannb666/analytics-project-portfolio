@@ -1,34 +1,45 @@
-# Early-Career Talent and Employer Benchmarking
+# Early-Career Talent Benchmarking
 
-**League of Page | 2026 BU ABA Hackathon Champion | Team project**
+**🏆 1st place, Boston University ABA Hackathon 2026 · Team League of Page · Python · Oct 2026**
 
-Research question: how can an employer improve its employment offering and recruitment messaging for early-career talent, using postings, employee accounts, and comparable employers?
+## Business question
 
-Accenture is the focal employer; Booz Allen Hamilton and Capgemini provide comparison cases. The reported dataset has **505 raw postings, 504 in the main comparison, and 1,245 reviews**. One posting remains excluded from the main comparison because employer attribution is uncertain.
+How can Accenture improve its offering for early-career hires, and the messages it uses to recruit them? We compared what its job postings promise with what employees report, and benchmarked both against Booz Allen Hamilton and Capgemini.
 
-## Work
+## Data
 
-- Validate company IDs, record IDs, missing values, and separate source denominators.
-- Establish a posting-only baseline before interpreting reviews.
-- Screen career development, workload/flexibility, and compensation/benefits with explicit dictionaries and regular expressions.
-- Retain source IDs, exclusions, duplicate-text checks, and role/date/location sensitivity analysis.
-- Create visualizations and an offline form for human evidence review.
-- Develop two proposed pilots: training aligned with the first project and usable learning time.
+The data came from the competition organizers and is not redistributed here.
 
-The findings are descriptive. A keyword mention is neither sentiment nor proof that an employer delivers a promise. The archive does not claim measured hiring or retention improvements. Saved human-validation labels were not recovered, so no precision, recall, or F1 result is asserted.
+| Source | Records |
+| --- | ---: |
+| Job postings (3 employers) | 505 raw; 504 in the main comparison (1 excluded because the employer was uncertain) |
+| Employee reviews | 1,245 |
+| Review-to-role links, organization table, data dictionary | supporting tables |
 
-## Files and use
+## Method
 
-`analysis.py` and `League_of_Page_Consulting.ipynb` are an earlier analytical draft. Submission and `Untitled4` notebooks retain later analysis variants; they are not interchangeable releases. All historical versions are clearly archived rather than silently combined.
+1. **Validate:** check company and record IDs and missing values, and keep postings and reviews as separate denominators.
+2. **Posting baseline:** measure what each employer *advertises* before looking at reviews.
+3. **Theme screening:** tag three themes with explicit keyword dictionaries and regular expressions: career development, workload/flexibility, and compensation/benefits. Compute mention rates by employer and by source.
+4. **Evidence checks:** deduplicate text, run sensitivity analysis by role, date and location, and use an offline review form ([demo](tools/review_form_demo.html), with fictional records) for manual spot checks.
+5. **Benchmark and recommend:** compare the focal employer with its peers, then turn the gaps into pilot programs.
 
-Install the root Python requirements, then place authorized `organizations.csv`, `job_postings.csv`, `reviews.csv`, `review_job_role_links.csv`, and `data_dictionary.csv` beside the script/notebook. Newer submission notebooks use `HACKATHON_DATA_DIR` or their own data-directory setting; inspect the first cell before running. Raw files, generated source-text reports, and notebook outputs are excluded from GitHub.
+## Recommendations
 
-`tools/review_form_demo.html` is a standalone demonstration with six **fictional** examples replacing the original records. It can be opened locally and exports review labels to CSV.
+1. **Tie training to the first project.** New hires' onboarding training should lead directly into their first client assignment, so that what is learned is used right away.
+2. **Protect learning time.** Make development time usable in practice, not just advertised, and track how much of it new hires actually use.
 
-AI assistance was used for coding, dictionaries, evidence organization, translation, and drafting; the project and award belong to the League of Page team.
+## Limits
 
-## Public evidence redaction
+Keyword mentions measure what people *talk about*. They do not measure sentiment, and they do not prove an employer keeps its promises. The results are descriptive, and no hiring or retention impact is claimed.
 
-The public copy removes frozen job/review identifiers, derived case rows, and employer-specific workplace accounts from code literals. Empty case tables retain their column definitions so the analysis methods and presentation functions remain inspectable. Configure `EXCLUDED_JOB_IDS` with a JSON list of your own authorized record IDs before reproducing an exclusion decision; the public default is empty. Recomputed totals may differ from the historical 504-posting comparison until the appropriate authorized exclusions are configured.
+## Files
 
-Historical case rows and original source are preserved locally, outside this public repository. This is a substantive privacy preparation of input data embedded in source, not a claim that all historical evidence has been published.
+| File | Purpose |
+| --- | --- |
+| [`early_career_talent.ipynb`](early_career_talent.ipynb) | Final team notebook: loading, theme screening, charts, sensitivity, recommendations |
+| [`analysis.py`](analysis.py) | Earlier script version of the analysis |
+| [`notebook_drafts/`](notebook_drafts) | Intermediate team drafts, kept for reference |
+| [`tools/review_form_demo.html`](tools/review_form_demo.html) | Offline manual-review form that exports labels to CSV |
+
+To run it, put the five organizer CSVs beside the notebook or set `HACKATHON_DATA_DIR`, then run all cells. This was a team project. AI assisted with coding, dictionary drafting and translation.

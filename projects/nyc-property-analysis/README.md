@@ -6,4 +6,4 @@ Historical R analysis of NYC property sales, focusing on Murray Hill. It compare
 
 Run `analysis.R` in RStudio with `tidyverse` installed and choose your authorized `all_nyc_data.csv` when prompted. The original script uses `file.choose()` and preserves the historical filters and class choices. The 150 MB source dataset and address-level records are not included.
 
-This is the recovered coursework script. It has not been rerun in R during archive preparation. Missing-value handling and the suitability of the selected building classes should be reviewed before reusing the analysis.
+This is the original coursework script. Missing-value handling and the suitability of the selected building classes should be reviewed before reusing the analysis.
