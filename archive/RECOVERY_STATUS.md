@@ -1,6 +1,6 @@
 # Coverage and source recovery
 
-Snapshot date: 2026-10-30. See [PROJECTS.md](PROJECTS.md) for all 15 project summaries.
+Snapshot date: 2026-10-30. See [PROJECT_INVENTORY.md](PROJECT_INVENTORY.md) for all 15 project summaries.
 
 ## Sources checked
 

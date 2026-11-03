@@ -27,3 +27,10 @@ tmp/
 *.zip
 *.pdf
 *.docx
+
+# Public datasets and generated results that are meant to be published
+!projects/crypto-market-sql/data/
+!projects/crypto-market-sql/data/daily_metrics.csv
+!projects/crypto-market-sql/outputs/*.csv
+!projects/airline-optimization/outputs/*.csv
+projects/crypto-market-sql/data/crypto.db

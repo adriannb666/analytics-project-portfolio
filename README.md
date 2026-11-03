@@ -1,48 +1,35 @@
-# Yitian (Adrian) Zhang | Analytics & Quantitative Research Portfolio
+# Yitian (Adrian) Zhang | Business Analytics Portfolio
 
-Applied mathematics, business analytics, and quantitative research projects connecting data, models, and practical decisions. Explore the project summaries, methods, source code, and reproduction notes below.
-
-[All 15 projects](PROJECTS.md) · [Source availability](RECOVERY_STATUS.md) · [Validation](VALIDATION.md) · [Data and attribution](DATA_POLICY.md)
+M.S. Applied Business Analytics at Boston University (expected Dec 2027) · B.A. Applied Mathematics, Kenyon College.
+I turn messy business and market data into decisions, using SQL, Python, optimization and clear charts.
+[LinkedIn](https://linkedin.com/in/yitian-zhang1219/) · 中文版: [README.zh-CN.md](README.zh-CN.md)
 
 ## Featured projects
 
-| Project | What it demonstrates | Source |
-| --- | --- | --- |
-| [Trading Research and Risk Terminal](projects/trading-terminal) | Trading plans, position sizing, journals, pre-trade checks, and risk monitoring | React / JavaScript / TypeScript application snapshot |
-| [Early-Career Talent Benchmarking](projects/early-career-talent) | Text screening, evidence checks, employer comparisons, and business recommendations | Python scripts and notebooks; League of Page, 2026 BU ABA Hackathon champion team |
-| [Celonis Employer Analysis](projects/celonis-employer-analysis) | Non-destructive preprocessing, data-quality flags, descriptive analysis, and team workflows | Python scripts and notebook variants |
-| [NYC Property Sales](projects/nyc-property-analysis) | Cleaning, period comparison, k-means, visualization, and t-tests | Recovered R script |
+| Project | Business question | Result | Tools |
+| --- | --- | --- | --- |
+| [**Crypto Market Intelligence**](projects/crypto-market-sql) | Which assets drive exchange volume, how risky are they, and do exchange flows predict returns? | BTC's volume share swings with the cycle, from 50% (2021, 2025) to 68% (2023). Exchange flows showed no reliable signal. | SQL (CTEs, window functions), Python, Power BI |
+| [**Early-Career Talent Benchmarking**](projects/early-career-talent) | How should Accenture improve its early-career offering and recruiting messages? | 🏆 **1st place, BU ABA Hackathon 2026.** Analyzed 504 postings and 1,245 reviews, and recommended two pilot programs. | Python, regex text screening, pandas |
+| [**Airline Fleet & Route Optimization**](projects/airline-optimization) | Which fleet mix and schedule maximize daily profit under a $160M budget? | Buy 10 aircraft for $154M, for $163,600 daily profit. The service-rule assumption is worth $3,200 a day. | Mixed-integer programming, SciPy, MATLAB |
+| [**Loan Approval Prediction**](projects/loan-approval) | Can a simple linear classifier screen loan applications, and how much does credit score matter? | 89% test accuracy against a 73% baseline. Accuracy falls to 82% without credit score. | MATLAB, least squares, model evaluation |
 
-Additional projects: [TVEM Bands](projects/tvem-bands), a Pine Script indicator with historical revisions, and [microbrewery marketing scenarios](projects/bsim-marketing), a business-simulation case.
+<p align="center">
+  <img src="projects/crypto-market-sql/outputs/volume_share.png" width="48%">
+  <img src="projects/airline-optimization/outputs/optimal_plan.png" width="48%">
+</p>
 
-## Quantitative research archive
+## More projects
 
-Recovered historical source, partial source, and confirmed project descriptions:
+- [Trading Research & Risk Terminal](projects/trading-terminal): a React app for trading plans, position sizing, pre-trade checks and trade journals.
+- [Celonis Employer Analysis](projects/celonis-employer-analysis): data-quality preprocessing for 758 postings and 933 reviews; the warm-up case before the hackathon.
+- [NYC Property Sales](projects/nyc-property-analysis): R analysis of Murray Hill sales using k-means clustering and t-tests.
 
-- [Bitcoin dynamic allocation](research/bitcoin-dynamic-allocation)
-- [Gold and Bitcoin trading strategy](research/gold-bitcoin-strategy)
-- [Loan approval prediction](research/loan-approval)
-- [Airline fleet and route optimization](research/airline-optimization)
-- [Construction scheduling](research/construction-scheduling)
-- [Square-root Monte Carlo study](research/sqrt-monte-carlo)
-- [Auto MPG least squares and regularization](research/auto-mpg)
-- [Fish tank dynamic programming](research/fish-tank-dp)
-- [Housing market statistical analysis](research/taipei-housing)
+Older coursework, quantitative research (Bitcoin dynamic allocation, a gold/Bitcoin backtest, Monte Carlo studies) and practice code are in [`archive/`](archive).
 
-Source is recovered for most research projects above. Some material consists of fragments or report source. The Bitcoin capstone folder now includes two related constant-weight R experiments; its final Bellman implementation remains missing. The [project inventory](PROJECTS.md) records each distinction.
+## Run
 
-## Supporting code
+```sh
+pip install -r requirements.txt
+```
 
-- [Python fundamentals](practice/python-fundamentals)
-- [R regression examples](practice/r-regression)
-- [Historical Python/Pine indicator conversions](practice/indicator-conversions)
-- [MATLAB image arithmetic exercise](practice/matlab-image-arithmetic)
-- [Bilingual resume generation](tools/resume-generator)
-
-## Reproduce and review
-
-Python dependencies are in `requirements.txt`; application dependencies are in the terminal's `package.json` and lockfile. Read the relevant project README for data paths and environment requirements. Restricted datasets and live account data are not bundled.
-
-Team contributions and AI assistance are disclosed. Historical simulations, keyword counts, and source snapshots are presented with their original limits; this archive does not claim independently verified investment performance or causal business impact.
-
-English is the primary language for this portfolio and its project documentation. An optional [Chinese translation](README.zh-CN.md) is available. Historical source files retain their original comments and labels.
+Each project README has its own run steps. Competition and course datasets are not redistributed (see [DATA_POLICY.md](DATA_POLICY.md)). Team projects are credited to their teams, and AI assistance is disclosed in [THIRD_PARTY.md](THIRD_PARTY.md).

@@ -1,0 +1,5 @@
+variables,Smalltown/Townville rule,daily_profit_usd,med848_planes,smal286_planes,aircraft_total,capex_musd,med848_metropolis,med848_cityburg,med848_smalltown,med848_townville,smal286_metropolis,smal286_cityburg,smal286_smalltown,smal286_townville
+integer,= exact (historical code),160400.0,6.0,4.0,10.0,154.0,8.0,8.0,0.0,0.0,0.0,5.0,3.0,4.0
+continuous,= exact (historical code),170289.83,6.8242,2.3845,9.2087,160.0,8.0,10.8257,0.0,0.0,0.0,2.1743,3.0,4.0
+integer,>= minimum,163600.0,6.0,4.0,10.0,154.0,8.0,8.0,0.0,0.0,0.0,5.0,3.0,6.0
+continuous,>= minimum,170750.85,5.6961,5.7689,11.465,160.0,8.0,7.3002,0.0,0.0,0.0,5.6998,3.0,12.0

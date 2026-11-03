@@ -1,0 +1,5 @@
+asset,flow_direction,months,avg_next_month_return_pct,pct_months_next_up
+BTC,Net inflow,54,3.9,54.0
+BTC,Net outflow,45,3.9,51.0
+ETH,Net inflow,36,2.1,47.0
+ETH,Net outflow,63,5.2,52.0
