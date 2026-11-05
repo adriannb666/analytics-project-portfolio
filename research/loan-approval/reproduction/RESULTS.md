@@ -16,3 +16,7 @@ The data is Kaggle's [loan approval dataset](https://www.kaggle.com/datasets/ami
 | Largest coefficients | Unemployed (−), dependents (−), existing loans (−), credit score (+), income (+) | Same order: −0.326, −0.155, −0.140, +0.129, +0.085 |
 
 The original standardizes the numeric columns on all 1,000 rows before splitting. The port keeps this so that it can check the historical numbers. A new analysis should fit the scaling on the training rows only.
+
+## Check with the original course copy
+
+The `loanapproval.csv` used for the course project was later found on Adrian's laptop (downloaded January 2026). Running `loan_ls.py` on that file gives output identical to [`output.txt`](output.txt), line for line. The public copy above and the course copy give the same results.

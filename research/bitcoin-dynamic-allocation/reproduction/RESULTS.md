@@ -26,3 +26,15 @@ These constant-weight experiments therefore cannot beat buy-and-hold. The capsto
 
 ![Price split](figures/1_price_split.png)
 ![Sharpe by lambda](figures/2_sharpe_compare.png)
+
+## Check with the original capstone data files
+
+Two TradingView BTCUSD daily exports from September 2025, the capstone period, were later found on Adrian's laptop: a Bitstamp export (2018-03-17 to 2025-09-22) and a CRYPTO index export (2019-10-01 to 2025-09-22). With either file and either start date the grid search again selects λ* = 1 (buy-and-hold), so the conclusion above does not depend on which data were used.
+
+| Input | Data period | λ* | Validation annual return | Sharpe | Max drawdown | Final value |
+| --- | --- | --- | --- | --- | --- | --- |
+| Bitstamp, from 2019-01-01 | to 2025-09-22 | 1.0 | 98.1% | 2.00 | −28.2% | 2.65× |
+| Bitstamp, full file | 2018-03-17 to 2025-09-22 | 1.0 | 98.1% | 2.00 | −28.2% | 2.65× |
+| CRYPTO index, full file | 2019-10-01 to 2025-09-22 | 1.0 | 97.6% | 2.01 | −28.1% | 2.65× |
+
+The validation period is 2024-01-01 to 2025-09-22 in all three runs. These files do not contain the Bellman model, which is still unrecovered.

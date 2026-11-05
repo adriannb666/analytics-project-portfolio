@@ -16,3 +16,7 @@ The data is the UCI Auto MPG dataset (398 rows; 392 after dropping missing horse
 The coefficients also match: intercept 23.486; cylinders −0.62675; displacement −0.015291 (OLS) and −0.015426 (ridge); horsepower −2.1755; weight −4.1397; acceleration −0.46348.
 
 As the project README notes, λ is chosen on the test split and scaling uses all rows. Ridge's "best" λ = 0.001 is therefore practically identical to OLS, and the comparison does not show that regularization helps on this data.
+
+## Check with the original course copy
+
+The `AUTOMPG.csv` used for the course project (398 rows with a pandas index column) was later found on Adrian's laptop. Running `auto_mpg.py` on that file gives output identical to [`output.txt`](output.txt), line for line.

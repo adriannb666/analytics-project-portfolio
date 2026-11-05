@@ -29,7 +29,7 @@ Projects in business analytics, optimization, statistics and quantitative financ
 | [Celonis employer analysis](projects/celonis-employer-analysis) | Non-destructive preprocessing of 758 postings and 933 reviews with data-quality flags | ✅ |
 | [Bitcoin dynamic allocation (capstone)](research/bitcoin-dynamic-allocation) | MDP / Bellman rebalancing policy; supporting experiments rerun, final DP code not yet recovered | Partly |
 
-Also included: the [TVEM Bands](projects/tvem-bands) TradingView indicator, a [B-SIM marketing case](projects/bsim-marketing), and supporting code ([Python](practice/python-fundamentals), [R regression](practice/r-regression), [indicator conversions](practice/indicator-conversions), [MATLAB](practice/matlab-image-arithmetic), a [résumé generator](tools/resume-generator)).
+Also included: the [TVEM Bands](projects/tvem-bands) TradingView indicator, a [B-SIM marketing case](projects/bsim-marketing), and supporting code ([Python](practice/python-fundamentals), [R regression](practice/r-regression), [indicator conversions](practice/indicator-conversions), [MATLAB](practice/matlab-image-arithmetic), [MATLAB signal processing and SVD](practice/matlab-signal-and-svd), a [résumé generator](tools/resume-generator)).
 
 ## Running the code
 

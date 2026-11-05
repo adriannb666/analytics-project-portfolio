@@ -20,4 +20,4 @@ Updated November 2026. "Reproduced" means the project was rerun from source and 
 | 14 | [Construction scheduling (CPM)](research/construction-scheduling) | Report source; reimplemented model | ✅ Exact match |
 | 15 | [Bitcoin dynamic allocation](research/bitcoin-dynamic-allocation) | Supporting R experiments | Partly: final Bellman code not recovered |
 
-Supporting code: [Python fundamentals](practice/python-fundamentals), [R regression examples](practice/r-regression), [Python/Pine indicator conversions](practice/indicator-conversions), [MATLAB image arithmetic](practice/matlab-image-arithmetic) and [bilingual résumé generation](tools/resume-generator).
+Supporting code: [Python fundamentals](practice/python-fundamentals), [R regression examples](practice/r-regression), [Python/Pine indicator conversions](practice/indicator-conversions), [MATLAB image arithmetic](practice/matlab-image-arithmetic), [MATLAB signal processing and SVD](practice/matlab-signal-and-svd) and [bilingual résumé generation](tools/resume-generator).
