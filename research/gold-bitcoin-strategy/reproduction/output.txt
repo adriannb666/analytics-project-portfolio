@@ -1,0 +1,17 @@
+Gold 95.0% VaR is: 0.014581932751732484
+Gold 95.0% CVaR is : 0.018215192926793133
+Bitcoin 95.0% VaR is: 0.07147543872314183
+Bitcoin 95.0% CVaR is: 0.08881122797560882
+Optimized Weights: Gold = 0.3471, Bitcoin = 0.6529
+Portfolio 95.0% VaR is: 0.0500
+Portfolio 95.0% CVaR is: 0.0622
+Final Return of Hold Strategy Portfolio: $48178.8766
+Final EMA Strategy Portfolio Value: $13236.05
+Gold Buys: 31
+Gold Sells: 31
+Bitcoin Buys: 43
+Bitcoin Sells: 43
+Portfolio VaR (95%): 0.0460
+Portfolio CVaR (95%): 0.0571
+Maximum Drawdown for EMA Strategy Portfolio: -0.4743
+Maximum Drawdown for Hold Strategy Portfolio: -0.8139

@@ -1,11 +1,13 @@
 # Loan Approval Prediction
 
-Two-person MATLAB least-squares classification project with one-hot encoding, Z-score scaling, an 80/20 split, a 0.5 threshold, and credit-score ablation.
+**Question:** Which applicant characteristics predict loan approval under a least-squares model, and how much does credit score matter?
 
-**Archive status:** MATLAB source was recovered from an unfenced user message. The original report source is retained locally and excluded from this public repository.
+**Result:** The linear least-squares classifier reaches **0.89 test accuracy**, against a 0.73 baseline that always predicts approval. Removing credit score drops accuracy to **0.82** and raises both false approvals (14 → 22) and false rejections (8 → 14). Unemployment, number of dependents and existing loans lower the approval score; credit score and income raise it.
 
-See [SOURCE_INDEX.md](SOURCE_INDEX.md) for recovered files. Numbering reflects extraction, not a verified release sequence. Team work and AI-assisted source are preserved as historical material.
+**Methods:** Design matrix with an intercept, one-hot categorical variables and z-scored numeric variables. A stratified 80/20 split, `A\y`, a 0.5 decision threshold and an ablation study (MATLAB).
 
-## Reuse and limits
+**Reproduced:** ✅ Exact match: accuracy, RMSE and both confusion matrices cell for cell, on the public Kaggle data with the same random split. See [reproduction results](reproduction/RESULTS.md).
 
-The source retains original one-hot encoding, scaling, stratified splitting, threshold classification, and credit-score ablation. Review preprocessing and evaluation design before reuse; no current MATLAB execution or independently reproduced accuracy is claimed. Set LOAN_DATA_FILE to your authorized input file and supply required MATLAB toolboxes.
+**Limitation:** Scaling uses all rows before splitting, and a single split is reported.
+
+Files: [`analysis.m`](analysis.m). The original report is kept privately because it names a collaborator. Two-person project (MATH 325, 2026).

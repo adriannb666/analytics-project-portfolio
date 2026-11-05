@@ -1,6 +1,6 @@
 # Coverage and source recovery
 
-Snapshot date: 2026-10-30. See [PROJECTS.md](PROJECTS.md) for all 15 project summaries.
+Snapshot date: 2026-10-30. See [PROJECTS.md](../PROJECTS.md) for all 15 project summaries. This is the archive-preparation record; for what has since been rerun and verified, see [REPRODUCTION.md](../REPRODUCTION.md).
 
 ## Sources checked
 

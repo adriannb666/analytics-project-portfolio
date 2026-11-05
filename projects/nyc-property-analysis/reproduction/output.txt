@@ -1,0 +1,17 @@
+Murray Hill sales after filters: 148  (before 2020: 60, 2020 onward: 88)
+1a  sales from 2020 onward: 88
+    mean sale_price    before: 10,354,870.9500   from 2020: 11,999,096.1023
+    mean gross_sqft    before: 13,587.7167   from 2020: 16,345.8864
+    sd sale_price      before: 17,632,710.9167   from 2020: 41,553,083.5923
+    cor(price, sqft)   before: 0.7239   from 2020: 0.8537
+1c  fivenum sale_price: before [7.0000000e+04 3.9385035e+06 5.1712500e+06 7.8750000e+06 1.1000000e+08]  from 2020 [9.97000e+05 3.46250e+06 4.40005e+06 6.75000e+06 3.80600e+08]
+1c  fivenum gross_square_feet: before [  1824.    3684.5   5671.5   7822.5 121221. ]  from 2020 [  1824.    3817.5   4956.5   6877.5 407555. ]
+2   k-means total within-SS = 30.9626
+           n    mean_price      mean_sqft
+cluster                                  
+1          1  3.806000e+08  407555.000000
+2         11  2.816950e+07   95339.727273
+0        136  7.255502e+06    5863.301471
+3   top building classes: {'C5': 25, 'A4': 19, 'C7': 14, 'B1': 9}
+    sale_price         C5 mean 10,805,256.64 (n=25)  A4 mean 4,258,355.26 (n=19)  Welch t=1.8625  p=0.07451
+    gross_square_feet  C5 mean 5,734.76 (n=25)  A4 mean 3,139.63 (n=19)  Welch t=6.1432  p=2.616e-07

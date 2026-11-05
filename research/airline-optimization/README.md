@@ -1,11 +1,17 @@
 # Airline Fleet and Route Optimization
 
-Three-person MATLAB linear and mixed-integer programming case involving aircraft purchases, four routes, budget, demand, and flight-time constraints. Case outputs are model estimates.
+**Question:** With a $160M budget, which aircraft should Universal Airways buy, and how should it assign them to four routes to maximize daily profit?
 
-**Archive status:** MATLAB integer-programming code and report-source drafts recovered.
+**Result:** Buy 6 Med-848 and 4 Smal-286 aircraft ($154M). Fly the larger planes 8 times a day each to Metropolis and Cityburg, and the smaller planes 5 / 3 / 6 times to Cityburg / Smalltown / Townville. Maximum profit is **$163,600 per day** (integer program). The LP relaxation gives $170,751 with fractional fleet sizes.
 
-See [SOURCE_INDEX.md](SOURCE_INDEX.md) for recovered files. Numbering reflects extraction, not a verified release sequence. Team work and AI-assisted source are preserved as historical material.
+**Methods:** Linear programming and mixed-integer programming (MATLAB `linprog` / `intlinprog`). The constraints cover the budget, flight-time limits per aircraft, airport capacity and minimum service to small towns.
 
-## Reuse and limits
+**Reproduced:** ✅ Exact match with the submitted report. See [reproduction results](reproduction/RESULTS.md).
 
-The historical code imposes equality constraints for two routes although some narrative calls them minimum-flight requirements. Reconcile this assumption with the original case before reuse. MATLAB Optimization Toolbox is required. No current MATLAB execution is claimed.
+## Files
+
+- [`archive/final_submission.m`](archive/final_submission.m): the final model, transcribed from the report appendix. Minimum trips are ≥ constraints.
+- [`archive/recovered_01.m`](archive/recovered_01.m): an earlier draft that wrongly treats the minimum-trip requirements as equalities (exactly 3 and 4 trips). It is kept for history; the final version fixes it.
+- `archive/recovered_02–05.tex`: drafts of the report source. The index is in [SOURCE_INDEX.md](SOURCE_INDEX.md).
+
+Team project: Luke Smallwood, Fatma Mahmoud and Adrian Zhang (MATH 347, Kenyon College, 2024).

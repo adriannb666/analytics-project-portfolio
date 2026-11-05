@@ -1,0 +1,23 @@
+== linprog (LP relaxation): status=0  profit/day = 170,750.85
+   Med→Metropolis     8.0000
+   Med→Cityburg       7.3002
+   Med→Smalltown      0.0000
+   Med→Townville      0.0000
+   Smal→Metropolis    0.0000
+   Smal→Cityburg      5.6998
+   Smal→Smalltown     3.0000
+   Smal→Townville    12.0000
+   Med-848 planes     5.6961
+   Smal-286 planes    5.7689
+== intlinprog (integer): status=0  profit/day = 163,600.00
+   Med→Metropolis     8.0000
+   Med→Cityburg       8.0000
+   Med→Smalltown      0.0000
+   Med→Townville      0.0000
+   Smal→Metropolis    0.0000
+   Smal→Cityburg      5.0000
+   Smal→Smalltown     3.0000
+   Smal→Townville     6.0000
+   Med-848 planes     6.0000
+   Smal-286 planes    4.0000
+budget used ($M): 154.0

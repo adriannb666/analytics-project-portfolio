@@ -1,0 +1,26 @@
+n=1000  train=800  test=200  approval rate=0.729
+Baseline accuracy (always 1): 0.7300
+=== Full model ===
+Test accuracy: 0.8900
+Test RMSE: 0.3322
+Confusion (rows true 0/1, cols pred 0/1):
+[[ 40  14]
+ [  8 138]]
+Top coefficients:
+  employment_status_Unemployed     -0.3263
+  num_dependents                   -0.1553
+  existing_loans_count             -0.1402
+  credit_score                      0.1286
+  annual_income                     0.0851
+  gender_Male                       0.0325
+  marital_status_Married            0.0315
+  employment_status_Self-employed   0.0251
+  marital_status_Single             0.0122
+  loan_amount                       0.0087
+=== Ablation (no credit_score) ===
+Test accuracy: 0.8200
+Test RMSE: 0.3648
+Confusion:
+[[ 32  22]
+ [ 14 132]]
+Delta accuracy: 0.0700   Delta RMSE: 0.0326

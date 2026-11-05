@@ -1,11 +1,11 @@
 # Square-Root Algorithm Monte Carlo Study
 
-Three-person R project comparing fixed and proportional initial seeds under exponential inputs with means 10 and 250, one to three iterations, and samples up to 200,000.
+**Question:** For the averaging algorithm y ← (y + x/y)/2 with exponentially distributed inputs, which starting guess minimizes the expected squared error after 1–3 iterations?
 
-**Archive status:** R function and optimization fragments recovered; the final report was inspected. A single final runnable project file remains unrecovered.
+**Result:** For E[X] = 10 the optimal fixed seed falls from 3.42 at one step to 3.00 at two and 2.41 at three. Each extra iteration cuts the error 20–40×. The rerun also showed that the two seed families studied are **mathematically equivalent**: a proportional seed αX with α = 1/c gives exactly the same iterates as a fixed seed c. The small differences in the original report were Monte Carlo noise.
 
-See [SOURCE_INDEX.md](SOURCE_INDEX.md) for recovered files. Numbering reflects extraction, not a verified release sequence. Team work and AI-assisted source are preserved as historical material.
+**Methods:** Monte Carlo estimation with N = 200,000 draws, grid search plus bounded refinement, and a first-order Taylor approximation (R).
 
-## Reuse and limits
+**Reproduced:** ✅ All 12 optimal seeds match the report. See [reproduction results](reproduction/RESULTS.md). The final R script was not recovered, so the reproduction reimplements the procedure in the report's Appendix A. The recovered R fragments are in `archive/` ([SOURCE_INDEX.md](SOURCE_INDEX.md)).
 
-Recovered pieces cover integration-based one-step loss, iterative square-root updates, Monte Carlo error estimates, and parameter search. Some snippets depend on preceding definitions; an illustrative results-table fragment contains an ellipsis. Do not treat every archived block as a standalone script or the fragments as a reproduction of the final 200,000-draw experiment.
+Team project: Jiangnan Ni, Xiaoran Pu and Yitian Zhang (Math 336 Applied Probability, Kenyon College, 2025).
