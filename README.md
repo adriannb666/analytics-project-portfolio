@@ -2,7 +2,7 @@
 
 Applied mathematics, business analytics, and quantitative research projects connecting data, models, and practical decisions. Explore the project summaries, methods, source code, and reproduction notes below.
 
-[All 15 projects](PROJECTS.md) · [Source availability](RECOVERY_STATUS.md) · [Validation](VALIDATION.md) · [Data and attribution](DATA_POLICY.md)
+[All 15 projects](PROJECTS.md) · [Reproduction results](REPRODUCTION.md) · [Source availability](RECOVERY_STATUS.md) · [Validation](VALIDATION.md) · [Data and attribution](DATA_POLICY.md)
 
 ## Featured projects
 
