@@ -14,7 +14,7 @@ Preserve original fields and rows; add normalized text, nullable rating fields, 
 
 Install the root Python requirements. The preprocessing script expects five authorized CSVs in its directory. The Celonis notebooks expect them in `league_of_page_data/` under the notebook's working directory; some historical versions create a named workspace first. Original embedded compressed datasets were replaced with an explicit local-file check. Review the setup cell and supply files there before running.
 
-No employee-review text or organizer dataset is distributed in this repository. Data-dependent notebooks have been inspected and sanitized; this archival pass does not claim a fresh full-dataset rerun.
+No employee-review text or organizer dataset is distributed in this repository. `preprocess.py` was rerun on the original organizer data; its built-in checks pass and it reproduces the saved outputs exactly ([reproduction check](REPRODUCTION.md)).
 
 ## Public evidence redaction
 

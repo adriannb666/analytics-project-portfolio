@@ -9,3 +9,4 @@ These are distinct source blocks recovered from existing conversations. They inc
 | [recovered_03.tex](archive/recovered_03.tex) | tex | 5489 |
 | [recovered_04.tex](archive/recovered_04.tex) | tex | 1165 |
 | [recovered_05.tex](archive/recovered_05.tex) | tex | 5365 |
+| [final_submission.m](archive/final_submission.m) | m | 2620 |

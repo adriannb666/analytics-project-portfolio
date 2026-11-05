@@ -19,7 +19,7 @@ The findings are descriptive. A keyword mention is neither sentiment nor proof t
 
 ## Files and use
 
-`analysis.py` and `League_of_Page_Consulting.ipynb` are an earlier analytical draft. Submission and `Untitled4` notebooks retain later analysis variants; they are not interchangeable releases. All historical versions are clearly archived rather than silently combined.
+`analysis.py` and `notebooks/01_initial_consulting_analysis.ipynb` are the earlier analytical draft; `analysis.py` was rerun on the original data and reproduces the saved outputs exactly ([reproduction check](REPRODUCTION.md)). The other notebooks are numbered in the order they were saved: `02`–`03` are chart drafts, and `04`–`06` lead up to the final competition submission (`06_final_submission.ipynb`). They are separate historical versions, not interchangeable releases.
 
 Install the root Python requirements, then place authorized `organizations.csv`, `job_postings.csv`, `reviews.csv`, `review_job_role_links.csv`, and `data_dictionary.csv` beside the script/notebook. Newer submission notebooks use `HACKATHON_DATA_DIR` or their own data-directory setting; inspect the first cell before running. Raw files, generated source-text reports, and notebook outputs are excluded from GitHub.
 

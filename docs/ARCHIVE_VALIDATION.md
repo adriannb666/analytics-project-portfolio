@@ -8,7 +8,7 @@ Prepared 2026-10-30.
 - Executed both Python fundamentals notebooks, including their existing assertions.
 - Removed all notebook outputs, attachments, execution counts, and personal notebook metadata.
 - Replaced four compressed organizer-data loaders with explicit local-file checks.
-- Corrected four prose cells in historical Untitled4 drafts from code to Markdown; no executable analysis was rewritten.
+- Corrected four prose cells in historical chart drafts (`02_chart_draft_a`, `03_chart_draft_b`) from code to Markdown; no executable analysis was rewritten.
 - Replaced the offline review form's six original records with fictional examples.
 - Checked publication files for credential patterns, private contact details, personal computer paths, long encoded payloads, and wallet-address patterns.
 - Parsed JSON/config manifests and recorded publication-file SHA-256 hashes.

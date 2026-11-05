@@ -1,48 +1,38 @@
 # Yitian (Adrian) Zhang | Analytics & Quantitative Research Portfolio
 
-Applied mathematics, business analytics, and quantitative research projects connecting data, models, and practical decisions. Explore the project summaries, methods, source code, and reproduction notes below.
+M.S. Applied Business Analytics (in progress), Boston University · B.A. Applied Mathematics, Kenyon College
 
-[All 15 projects](PROJECTS.md) · [Reproduction results](REPRODUCTION.md) · [Source availability](RECOVERY_STATUS.md) · [Validation](VALIDATION.md) · [Data and attribution](DATA_POLICY.md)
+Projects in business analytics, optimization, statistics and quantitative finance. **12 of the projects below have been rerun from source and match their originally reported results** ([reproduction summary](REPRODUCTION.md)).
+
+[All 15 projects](PROJECTS.md) · [Reproduction results](REPRODUCTION.md) · [Data and attribution](DATA_POLICY.md) · [中文简介](README.zh-CN.md)
 
 ## Featured projects
 
-| Project | What it demonstrates | Source |
+| Project | Question → result | Tools |
 | --- | --- | --- |
-| [Trading Research and Risk Terminal](projects/trading-terminal) | Trading plans, position sizing, journals, pre-trade checks, and risk monitoring | React / JavaScript / TypeScript application snapshot |
-| [Early-Career Talent Benchmarking](projects/early-career-talent) | Text screening, evidence checks, employer comparisons, and business recommendations | Python scripts and notebooks; League of Page, 2026 BU ABA Hackathon champion team |
-| [Celonis Employer Analysis](projects/celonis-employer-analysis) | Non-destructive preprocessing, data-quality flags, descriptive analysis, and team workflows | Python scripts and notebook variants |
-| [NYC Property Sales](projects/nyc-property-analysis) | Cleaning, period comparison, k-means, visualization, and t-tests | Recovered R script |
+| [Early-career talent benchmarking](projects/early-career-talent) 🏆 | How can Accenture improve its offer and recruiting message to early-career talent? Benchmarked 505 postings and employee reviews against Booz Allen and Capgemini, then proposed two pilot programs. **2026 BU ABA Hackathon champion team.** | Python, text screening, evidence review |
+| [Gold & Bitcoin trading strategy](research/gold-bitcoin-strategy) | 2022 MCM Problem C: a VaR/CVaR-constrained portfolio with EMA signals grows $1,000 to $13,236 (2016–2021) and cuts the maximum drawdown from 81% to 47%. | Python, SciPy optimization, risk metrics |
+| [Murray Hill property sales](projects/nyc-property-analysis) | NYC sales before and from 2020: the median price fell while the mean rose; k-means isolates outliers; Welch t-tests compare building classes. | R, k-means, hypothesis testing |
+| [Airline fleet optimization](research/airline-optimization) | Integer program choosing aircraft and routes under a $160M budget: 6 + 4 aircraft, $163,600 daily profit. | MATLAB, LP / MILP |
+| [Loan approval prediction](research/loan-approval) | A least-squares classifier reaches 0.89 accuracy against a 0.73 baseline; removing credit score drops it to 0.82. | MATLAB, linear algebra |
+| [Trading research & risk terminal](projects/trading-terminal) | A web app for trading plans, position sizing, pre-trade checks, journals and DEX account risk monitoring. | React, TypeScript, Base44 |
 
-Additional projects: [TVEM Bands](projects/tvem-bands), a Pine Script indicator with historical revisions, and [microbrewery marketing scenarios](projects/bsim-marketing), a business-simulation case.
+## Optimization, statistics and modeling
 
-## Quantitative research archive
+| Project | Result | Reproduced |
+| --- | --- | --- |
+| [Biogas plant scheduling (CPM)](research/construction-scheduling) | 38-week schedule; corrected a published paper's four critical paths to two | ✅ |
+| [Fish-tank inventory DP](research/fish-tank-dp) | Optimal 7-day ordering policy; robust to demand shifts (about 2.5% loss) | ✅ |
+| [Square-root algorithm Monte Carlo](research/sqrt-monte-carlo) | Optimal starting seeds for 1–3 iterations; showed the two seed families are equivalent | ✅ |
+| [Auto MPG: OLS vs ridge](research/auto-mpg) | Regularization gives no gain on this data (RMSE 4.14) | ✅ |
+| [New Taipei housing regression](research/taipei-housing) | Log-price model with R² = 0.725; MRT access dominates | ✅ |
+| [Celonis employer analysis](projects/celonis-employer-analysis) | Non-destructive preprocessing of 758 postings and 933 reviews with data-quality flags | ✅ |
+| [Bitcoin dynamic allocation (capstone)](research/bitcoin-dynamic-allocation) | MDP / Bellman rebalancing policy; supporting experiments rerun, final DP code not yet recovered | Partly |
 
-Recovered historical source, partial source, and confirmed project descriptions:
+Also included: the [TVEM Bands](projects/tvem-bands) TradingView indicator, a [B-SIM marketing case](projects/bsim-marketing), and supporting code ([Python](practice/python-fundamentals), [R regression](practice/r-regression), [indicator conversions](practice/indicator-conversions), [MATLAB](practice/matlab-image-arithmetic), a [résumé generator](tools/resume-generator)).
 
-- [Bitcoin dynamic allocation](research/bitcoin-dynamic-allocation)
-- [Gold and Bitcoin trading strategy](research/gold-bitcoin-strategy)
-- [Loan approval prediction](research/loan-approval)
-- [Airline fleet and route optimization](research/airline-optimization)
-- [Construction scheduling](research/construction-scheduling)
-- [Square-root Monte Carlo study](research/sqrt-monte-carlo)
-- [Auto MPG least squares and regularization](research/auto-mpg)
-- [Fish tank dynamic programming](research/fish-tank-dp)
-- [Housing market statistical analysis](research/taipei-housing)
+## Running the code
 
-Source is recovered for most research projects above. Some material consists of fragments or report source. The Bitcoin capstone folder now includes two related constant-weight R experiments; its final Bellman implementation remains missing. The [project inventory](PROJECTS.md) records each distinction.
+Python dependencies are listed in `requirements.txt`. Each `reproduction/` folder has a script, its full output, and a RESULTS page that compares the rerun with the original report and names the public dataset used. Restricted competition data and the NYC sales file are not distributed.
 
-## Supporting code
-
-- [Python fundamentals](practice/python-fundamentals)
-- [R regression examples](practice/r-regression)
-- [Historical Python/Pine indicator conversions](practice/indicator-conversions)
-- [MATLAB image arithmetic exercise](practice/matlab-image-arithmetic)
-- [Bilingual resume generation](tools/resume-generator)
-
-## Reproduce and review
-
-Python dependencies are in `requirements.txt`; application dependencies are in the terminal's `package.json` and lockfile. Read the relevant project README for data paths and environment requirements. Restricted datasets and live account data are not bundled.
-
-Team contributions and AI assistance are disclosed. Historical simulations, keyword counts, and source snapshots are presented with their original limits; this archive does not claim independently verified investment performance or causal business impact.
-
-English is the primary language for this portfolio and its project documentation. An optional [Chinese translation](README.zh-CN.md) is available. Historical source files retain their original comments and labels.
+Team projects credit their members. AI assistance in coding and documentation is disclosed in the project pages. Historical simulations are research exercises, not claims of live trading performance. The archive-preparation records are kept in [`docs/`](docs).

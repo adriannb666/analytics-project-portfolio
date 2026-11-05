@@ -1,11 +1,11 @@
-# NHPA Housing Market Statistical Analysis
+# New Taipei Housing Price Regression (NHPA)
 
-Historical R project involving regression, two-way ANOVA, model diagnostics, and visualization. Keep this distinct from the Murray Hill coursework and Ecdat classroom examples.
+**Question:** What drives house price per unit area in Sindian District, New Taipei City? The predictors are transaction date, house age, distance to the MRT, nearby convenience stores and location.
 
-**Archive status:** R scripts and model-diagnostic/visualization fragments recovered from two historical conversations.
+**Result:** The final model explains **72.5%** of the variation in log price. Each year of house age lowers price by about 0.66%. Distance to the MRT has the strongest effect, and convenience stores add less value the farther a home is from a station (significant interaction, p = 0.003). Longitude adds nothing once latitude is included (p = 0.94).
 
-See [SOURCE_INDEX.md](SOURCE_INDEX.md) for recovered files. Numbering reflects extraction, not a verified release sequence. Team work and AI-assisted source are preserved as historical material.
+**Methods:** Multiple regression with a square-root transformation of distance and a log transformation of price, an interaction term, nested F-tests, VIF checks and residual diagnostics (R).
 
-## Reuse and limits
+**Reproduced:** ✅ Rerun on the public UCI dataset. The rerun confirms every modeling decision noted in the script and found one bug: m3 referred to an undefined variable `Longitude_sqr`. See [reproduction results](reproduction/RESULTS.md).
 
-The recovered source uses NHPA.csv and includes exploratory plots, transformations, regression/model comparison, diagnostics, and coefficient summaries. Some visualization snippets require model objects from earlier code. Original computer paths were replaced with relative filenames. The dataset and a current R execution are not included.
+Files: `archive/recovered_05.R` is the main analysis. The others are diagnostics and plotting snippets that need the fitted model ([SOURCE_INDEX.md](SOURCE_INDEX.md)). `NHPA.csv` is the UCI Real Estate Valuation dataset with renamed columns.

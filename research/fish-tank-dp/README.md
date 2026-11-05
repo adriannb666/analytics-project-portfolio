@@ -1,11 +1,11 @@
 # Fish Tank Inventory Dynamic Programming
 
-Historical project involving dynamic programming and inventory/ordering decisions. Detailed model parameters and final results still need primary-source recovery.
+**Question:** How many fish tanks should Pete's Pet Supply order each day over a 7-day week to maximize expected profit, given random demand and holding costs?
 
-**Archive status:** MATLAB scripts and fragments recovered from two historical conversations.
+**Result:** The optimal policy is an order-up-to rule that winds down toward the end of the week. For example, with an empty shop, order 3 tanks on days 1–5, 1–2 on day 6 and none on day 7. Expected weekly profit from 3 tanks in stock is $3,631 under week-1 demand and $2,858 under week-2 demand. Using the wrong week's policy costs only about 2.5% of expected profit, so the policy is robust to this change in demand.
 
-See [SOURCE_INDEX.md](SOURCE_INDEX.md) for recovered files. Numbering reflects extraction, not a verified release sequence. Team work and AI-assisted source are preserved as historical material.
+**Methods:** Finite-horizon stochastic dynamic programming (backward induction). The state is inventory 0–5, the action is the order quantity, and the model includes a terminal cleaning cost. Robustness is checked by evaluating each policy under the other week's demand.
 
-## Reuse and limits
+**Reproduced:** ✅ The recomputed optimal policies match the policy tables saved in the original script, cell for cell. See [reproduction results](reproduction/RESULTS.md).
 
-The models use finite-horizon backward induction for inventory/order decisions, inventory bounds, demand distributions, sales revenue, and holding/opportunity costs. Several scenario variants are retained; do not concatenate them as one program. No current MATLAB run is claimed.
+Files: `archive/recovered_08.m` is the most complete script. The other files are earlier scenario variants; run them separately rather than as one program ([SOURCE_INDEX.md](SOURCE_INDEX.md)).

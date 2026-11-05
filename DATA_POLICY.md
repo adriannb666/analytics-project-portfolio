@@ -10,6 +10,4 @@ No blanket license is granted over team work, datasets, or third-party software.
 
 Frozen review/job identifiers and employer-specific case-row claims embedded in source were removed from public copies after publication review. Only generic methods and empty evidence-table schemas remain.
 
-Frozen review/job identifiers and employer-specific case-row claims embedded in source were removed from public copies after publication review. Only generic methods and empty evidence-table schemas remain.
-
 A loan-model report source containing course-derived results and collaborator names is retained locally, rather than published. The public code uses a configurable input path, and resume templates generalize its result figures.
