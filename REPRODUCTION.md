@@ -17,7 +17,7 @@ Twelve projects were rerun. Each result was compared with the original report, s
 | [NHPA housing regression](research/taipei-housing/reproduction/RESULTS.md) | UCI Real Estate Valuation (public) | Python port of the R script | Found and fixed an undefined-variable bug; all modeling decisions in the script confirmed (final R² = 0.725) |
 | [Bitcoin constant-weight experiments](research/bitcoin-dynamic-allocation/reproduction/RESULTS.md) | BTCUSD daily prices | Python port of both R scripts | λ* = 1 (buy-and-hold); explains why this design cannot select any other weight |
 
-MATLAB and R were not available in the run environment. The ports keep the original coefficients, data handling and logic line for line, including known issues when the goal is to check historical results. Where the original used MATLAB's `rng` + `randperm`, the port reproduces the same random split exactly. No datasets are committed; each results page names the public source and commit used.
+MATLAB and R were not available in the run environment. The ports keep the original coefficients, data handling and logic line for line, including known issues when the goal is to check historical results. Where the original used MATLAB's `rng` + `randperm`, the port reproduces the same random split exactly. No datasets are committed; each results page names the public source and commit used. The loan-approval and Auto MPG runs were repeated on the original course data files and give identical output; the Bitcoin experiments were repeated on the September 2025 capstone exports with the same conclusion.
 
 ## Not reproduced
 
