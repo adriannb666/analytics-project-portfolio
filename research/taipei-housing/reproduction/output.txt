@@ -1,0 +1,76 @@
+n = 414
+       TransactionDate  HouseAge  Dist2MRT  NumConvenStores  Latitude  Longitude    Price
+count          414.000   414.000   414.000          414.000   414.000    414.000  414.000
+mean          2013.149    17.713  1083.886            4.094    24.969    121.533   37.980
+std              0.282    11.392  1262.110            2.946     0.012      0.015   13.606
+min           2012.667     0.000    23.383            0.000    24.932    121.474    7.600
+25%           2012.917     9.025   289.325            1.000    24.963    121.528   27.700
+50%           2013.167    16.100   492.231            4.000    24.971    121.539   38.450
+75%           2013.417    28.150  1454.279            6.000    24.977    121.543   46.600
+max           2013.583    43.800  6488.021           10.000    25.015    121.566  117.500
+
+=== m1 full model: Price ~ TransactionDate + HouseAge + Dist2MRT + NumConvenStores + Latitude + Longitude
+  (Intercept)                          -14442        6775   -2.132     0.0336
+  TransactionDate                       5.149       1.557    3.307    0.00103
+  HouseAge                            -0.2697     0.03853   -7.000   1.06e-11
+  Dist2MRT                         -0.0044875    0.000718   -6.250   1.04e-09
+  NumConvenStores                      1.1333      0.1882    6.023   3.83e-09
+  Latitude                             225.47       44.57    5.059   6.38e-07
+  Longitude                           -12.429       48.58   -0.256      0.798
+  R2=0.5824  adjR2=0.5762  F=94.60 on 6,407 df  p=4.83e-74  resid SE=8.8575
+VIF m1: {'TransactionDate': np.float64(1.015), 'HouseAge': np.float64(1.014), 'Dist2MRT': np.float64(4.323), 'NumConvenStores': np.float64(1.617), 'Latitude': np.float64(1.61), 'Longitude': np.float64(2.926)}
+
+=== m2 sqrt(Dist2MRT): Price ~ TransactionDate + HouseAge + Dist2MRT_sqr + NumConvenStores + Latitude + Longitude
+  (Intercept)                         -9675.3        5811   -1.665     0.0967
+  TransactionDate                      6.0318       1.467    4.111   4.76e-05
+  HouseAge                           -0.25565     0.03624   -7.054   7.53e-12
+  Dist2MRT_sqr                       -0.48771     0.04914   -9.925   6.18e-21
+  NumConvenStores                     0.62019        0.19    3.265    0.00119
+  Latitude                             213.73        40.3    5.303   1.87e-07
+  Longitude                           -63.772       41.58   -1.534      0.126
+  R2=0.6315  adjR2=0.6261  F=116.25 on 6,407 df  p=4.97e-85  resid SE=8.3204
+
+NOTE: the original m3 formula uses Longitude_sqr, which is never defined, so it stops with an error in R. Longitude is used here, as in m4.
+
+=== m3 interaction: Price ~ TransactionDate + HouseAge + Dist2MRT_sqr + NumConvenStores + Dist2MRT_sqr:NumConvenStores + Latitude + Longitude
+  (Intercept)                          -11668        5633   -2.071     0.0389
+  TransactionDate                       6.164       1.419    4.343   1.78e-05
+  HouseAge                           -0.25713     0.03506   -7.335   1.22e-12
+  Dist2MRT_sqr                       -0.36239     0.05291   -6.849   2.76e-11
+  NumConvenStores                       1.874      0.2964    6.322   6.81e-10
+  Dist2MRT_sqr:NumConvenStores       -0.06948     0.01289   -5.390    1.2e-07
+  Latitude                             290.77       41.52    7.004   1.04e-11
+  Longitude                           -65.414       40.22   -1.627      0.105
+  R2=0.6561  adjR2=0.6502  F=110.66 on 7,406 df  p=4.96e-90  resid SE=8.0476
+
+Nested F (m2 vs m3): F=29.055, df=1,406, p=1.196e-07
+
+=== m4 log(Price): log_Price ~ TransactionDate + HouseAge + Dist2MRT_sqr + NumConvenStores + Dist2MRT_sqr:NumConvenStores + Latitude + Longitude
+  (Intercept)                         -533.82       145.4   -3.672   0.000273
+  TransactionDate                     0.15779     0.03663    4.307   2.07e-05
+  HouseAge                         -0.0066423   0.0009048   -7.341   1.17e-12
+  Dist2MRT_sqr                      -0.011794    0.001366   -8.637   1.33e-16
+  NumConvenStores                    0.033485    0.007651    4.377   1.53e-05
+  Dist2MRT_sqr:NumConvenStores     -0.0010024   0.0003327   -3.013    0.00275
+  Latitude                              9.217       1.072    8.602   1.73e-16
+  Longitude                         -0.082245       1.038   -0.079      0.937
+  R2=0.7247  adjR2=0.7199  F=152.65 on 7,406 df  p=1.58e-109  resid SE=0.2077
+
+=== m4_reduced (final): log_Price ~ TransactionDate + HouseAge + Dist2MRT_sqr + NumConvenStores + Dist2MRT_sqr:NumConvenStores + Latitude
+  (Intercept)                         -543.62       76.43   -7.112   5.17e-12
+  TransactionDate                     0.15768     0.03656    4.313   2.03e-05
+  HouseAge                         -0.0066406   0.0009034   -7.351   1.09e-12
+  Dist2MRT_sqr                       -0.01173      0.0011  -10.663   1.41e-23
+  NumConvenStores                    0.033526    0.007624    4.398    1.4e-05
+  Dist2MRT_sqr:NumConvenStores     -0.0010022   0.0003323   -3.016    0.00272
+  Latitude                             9.2176        1.07    8.613   1.58e-16
+  R2=0.7247  adjR2=0.7206  F=178.53 on 6,407 df  p=1.14e-110  resid SE=0.2075
+
+Nested F (m4_reduced vs m4): F=0.006, df=1,406, p=0.9369
+
+Model metrics:
+  Full Model (m1)                  R2=0.5824 adjR2=0.5762
+  Square-root Transformation (m2)  R2=0.6315 adjR2=0.6261
+  Interaction Model (m3)           R2=0.6561 adjR2=0.6502
+  Log-transformed Model (m4)       R2=0.7247 adjR2=0.7199
+  Final Model (m4_reduced)         R2=0.7247 adjR2=0.7206

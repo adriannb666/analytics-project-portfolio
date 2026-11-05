@@ -1,0 +1,16 @@
+rows used: 392  train: 314  test: 78
+OLS RMSE: 4.1424
+Ridge RMSE, lambda = 0.001: 4.1424
+Ridge RMSE, lambda = 0.01: 4.1424
+Ridge RMSE, lambda = 0.1: 4.1425
+Ridge RMSE, lambda = 1: 4.1428
+Ridge RMSE, lambda = 10: 4.1484
+Ridge RMSE, lambda = 100: 4.2347
+Best lambda: 0.001  Best ridge RMSE: 4.1424
+Coefficients (OLS, best ridge):
+  intercept      23.486  23.486
+  cylinders     -0.62675 -0.62674
+  displacement  -0.015291 -0.015426
+  horsepower    -2.1755 -2.1755
+  weight        -4.1397 -4.1396
+  acceleration  -0.46348 -0.46348

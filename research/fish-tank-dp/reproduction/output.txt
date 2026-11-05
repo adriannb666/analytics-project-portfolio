@@ -1,0 +1,22 @@
+=== Week 1 demand ===
+Optimal policy (rows: inventory 0-5, cols: day 1-7):
+[[3 3 3 3 3 2 0]
+ [3 3 3 3 3 2 0]
+ [3 3 3 3 3 1 0]
+ [2 2 2 2 2 1 0]
+ [1 1 1 1 1 0 0]
+ [0 0 0 0 0 0 0]]
+Matches the policy table hard-coded in the original script: True
+Expected profit V(day 1) by starting inventory 0-5: [2564.21 3014.83 3373.13 3631.34 3825.59 3993.59]
+=== Week 2 demand ===
+Optimal policy (rows: inventory 0-5, cols: day 1-7):
+[[3 3 3 3 3 1 0]
+ [3 3 3 3 2 1 0]
+ [3 3 2 2 2 1 0]
+ [2 2 2 1 1 0 0]
+ [1 1 1 1 0 0 0]
+ [0 0 0 0 0 0 0]]
+Matches the policy table hard-coded in the original script: True
+Expected profit V(day 1) by starting inventory 0-5: [1897.98 2320.03 2627.01 2858.34 3045.02 3213.02]
+Week 1 policy under Week 2 demand: expected reward from uniform random start = 2593.20  (optimal policy for that demand: 2660.23; loss 67.03)
+Week 2 policy under Week 1 demand: expected reward from uniform random start = 3316.41  (optimal policy for that demand: 3400.45; loss 84.04)
