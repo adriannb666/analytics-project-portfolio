@@ -8,4 +8,4 @@
 
 **Reproduced:** ✅ The recomputed optimal policies match the policy tables saved in the original script, cell for cell. See [reproduction results](reproduction/RESULTS.md).
 
-Files: `archive/recovered_08.m` is the most complete script. The other files are earlier scenario variants; run them separately rather than as one program ([SOURCE_INDEX.md](SOURCE_INDEX.md)).
+Files: `archive/recovered_08.m` is the most complete script. `archive/original_single_week.m` is the original single-week base model, found as a local file; it reproduces the week-2 policy exactly. The other files are earlier scenario variants; run them separately rather than as one program ([SOURCE_INDEX.md](SOURCE_INDEX.md)).

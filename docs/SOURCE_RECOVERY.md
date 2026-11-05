@@ -16,6 +16,15 @@ Archived chats also supplied Python/Pine indicator-conversion implementations an
 
 Loading additional search-result pages then recovered two R scripts from a Bitcoin training/validation discussion. They contain constant-weight experiments and visualization, and are included in the capstone folder with their original modeling limitations. They do not establish recovery of the final Bellman model.
 
+## Third pass: local laptop files (2026-11-05)
+
+Desktop, Documents, Downloads, `source` and `PycharmProjects` on Adrian's second laptop were searched. Findings:
+
+- `research/fish-tank-dp/archive/original_single_week.m`: the original single-week fish-tank DP script. Its output matches the week-2 reproduction exactly.
+- `practice/matlab-signal-and-svd/`: two Math 325 mini-project scripts (DFT audio filtering, SVD image compression).
+- The construction-scheduling report, the square-root Monte Carlo report and the Bitcoin DP presentations are on the laptop, but none contains the missing code.
+- Instructor-provided class demos and unrelated personal scripts on the laptop were left out.
+
 ## Remaining gaps
 
 - Bitcoin dynamic-allocation capstone: description and related constant-weight R scripts recovered; final Bellman implementation not recovered.

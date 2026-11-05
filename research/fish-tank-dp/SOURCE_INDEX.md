@@ -12,3 +12,6 @@ These are distinct source blocks recovered from existing conversations. They inc
 | [recovered_06.m](archive/recovered_06.m) | m | 3278 |
 | [recovered_07.m](archive/recovered_07.m) | m | 3858 |
 | [recovered_08.m](archive/recovered_08.m) | m | 7259 |
+| [original_single_week.m](archive/original_single_week.m) | m | 1518 |
+
+`original_single_week.m` is the original file from Adrian's laptop (April 2025), not a conversation recovery. It is the single-week base model with the week-2 demand distribution.

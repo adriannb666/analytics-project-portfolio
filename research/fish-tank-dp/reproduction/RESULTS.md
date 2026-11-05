@@ -20,3 +20,7 @@ The original script tests each week's policy under the other week's demand with 
 | Week 2 policy under week 1 demand | $3,316.41 | $3,400.45 | $84.04 (2.5%) |
 
 The policy is fairly robust to the change in demand: using the wrong week's policy costs about 2.5% of expected profit.
+
+## Check against the original local file
+
+`archive/original_single_week.m` was later found on Adrian's laptop. It is the single-week model with the week-2 demand distribution (0.2231, 0.3347, 0.2510, 0.1255, 0.0657) and the same revenue, order, holding and terminal costs. Ported line for line, it gives the same week-2 optimal policy table as above and the same expected profits (V on day 1 for inventory 0–5: 1898.0, 2320.0, 2627.0, 2858.3, 3045.0, 3213.0). This confirms the parameters in the recovered script against an original file.
