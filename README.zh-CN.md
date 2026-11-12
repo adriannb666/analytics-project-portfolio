@@ -34,3 +34,8 @@
 另有 [TVEM Bands](projects/tvem-bands) TradingView 指标、[B-SIM 营销案例](projects/bsim-marketing)，以及 Python、R、MATLAB 练习代码和[中英文简历生成脚本](tools/resume-generator)。
 
 每个 `reproduction/` 文件夹都有复现脚本、完整输出和结果对照页，并注明用到的公开数据集。比赛原始数据和纽约房产数据不在仓库中。团队项目注明了成员，AI 辅助情况写在各项目页里。历史回测只是研究练习，不代表实盘收益。
+
+## 加密市场研究（AD市场研究）
+
+[`research/ad-market-research`](research/ad-market-research) 收录知乎文章背后的数据研究：ICT 策略两年回测（473 笔，扣费后 −57R）、比特币分时效应（美东 17–18 点贡献约 2/3 的对数涨幅）、105 万个随机仓位的杠杆存活模拟（100 倍中位寿命 4.6 小时）。每篇都附带可从币安公开数据复现的代码和配图。
+
