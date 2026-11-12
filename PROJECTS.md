@@ -19,5 +19,6 @@ Updated November 2026. "Reproduced" means the project was rerun from source and 
 | 13 | [Gold/Bitcoin strategy](research/gold-bitcoin-strategy) | Full Python backtest, MATLAB/LaTeX fragments | ✅ Exact match |
 | 14 | [Construction scheduling (CPM)](research/construction-scheduling) | Report source; reimplemented model | ✅ Exact match |
 | 15 | [Bitcoin dynamic allocation](research/bitcoin-dynamic-allocation) | Supporting R experiments | Partly: final Bellman code not recovered |
+| 16 | [AD市场研究: crypto data studies](research/ad-market-research) | Node.js computation, Python figures; 4 studies | Rerunnable from Binance public data; numbers from the original runs |
 
 Supporting code: [Python fundamentals](practice/python-fundamentals), [R regression examples](practice/r-regression), [Python/Pine indicator conversions](practice/indicator-conversions), [MATLAB image arithmetic](practice/matlab-image-arithmetic) and [bilingual résumé generation](tools/resume-generator).
