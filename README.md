@@ -4,13 +4,21 @@ M.S. Applied Business Analytics (in progress), Boston University · B.A. Applied
 
 Projects in business analytics, optimization, statistics and quantitative finance. **12 of the projects below have been rerun from source and match their originally reported results** ([reproduction summary](REPRODUCTION.md)).
 
-[All 15 projects](PROJECTS.md) · [Reproduction results](REPRODUCTION.md) · [Data and attribution](DATA_POLICY.md) · [中文简介](README.zh-CN.md)
+[Personal website](https://adriannb666.github.io/) · [All 16 projects](PROJECTS.md) · [Reproduction results](REPRODUCTION.md) · [Data and attribution](DATA_POLICY.md) · [中文简介](README.zh-CN.md)
+
+## Start with your area of interest
+
+| Area | Suggested projects |
+| --- | --- |
+| Business & consulting analytics | [Hackathon champion team project](projects/early-career-talent), [NYC property analysis](projects/nyc-property-analysis) |
+| Quantitative research & optimization | [Gold/Bitcoin backtest](research/gold-bitcoin-strategy), [airline fleet model](research/airline-optimization) |
+| Crypto analytics & applications | [Bitcoin data studies](research/ad-market-research), [trading risk terminal](projects/trading-terminal) |
 
 ## Featured projects
 
 | Project | Question → result | Tools |
 | --- | --- | --- |
-| [Early-career talent benchmarking](projects/early-career-talent) 🏆 | How can Accenture improve its offer and recruiting message to early-career talent? Benchmarked 505 postings and employee reviews against Booz Allen and Capgemini, then proposed two pilot programs. **2026 BU ABA Hackathon champion team.** | Python, text screening, evidence review |
+| [Early-career talent benchmarking](projects/early-career-talent) 🏆 | How can Accenture improve its offer and recruiting message to early-career talent? Compared Accenture with Booz Allen and Capgemini using 504 job postings and 1,245 employee reviews (505 raw postings; one excluded), then proposed two pilot programs. **2026 BU ABA Hackathon champion team.** | Python, text screening, evidence review |
 | [Gold & Bitcoin trading strategy](research/gold-bitcoin-strategy) | 2022 MCM Problem C: a VaR/CVaR-constrained portfolio with EMA signals grows $1,000 to $13,236 (2016–2021) and cuts the maximum drawdown from 81% to 47%. | Python, SciPy optimization, risk metrics |
 | [Murray Hill property sales](projects/nyc-property-analysis) | NYC sales before and from 2020: the median price fell while the mean rose; k-means isolates outliers; Welch t-tests compare building classes. | R, k-means, hypothesis testing |
 | [Airline fleet optimization](research/airline-optimization) | Integer program choosing aircraft and routes under a $160M budget: 6 + 4 aircraft, $163,600 daily profit. | MATLAB, LP / MILP |
