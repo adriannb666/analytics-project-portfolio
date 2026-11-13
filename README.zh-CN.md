@@ -1,4 +1,4 @@
-> **English portfolio:** [Open the main portfolio](README.md) · [All 15 projects](PROJECTS.md)
+> **English portfolio:** [Open the main portfolio](README.md) · [All 16 projects](PROJECTS.md)
 >
 > 本页是中文简介，作品集和各项目文档以英文为主。
 
@@ -8,11 +8,13 @@
 
 这里收录商业分析、运筹优化、统计建模和量化金融方面的项目。**其中 12 个项目已经从源码重新运行，结果和当初报告的数字一致**，详见 [复现汇总](REPRODUCTION.md)。
 
+[个人主页](https://adriannb666.github.io/) · [全部 16 项项目](PROJECTS.md) · [复现结果](REPRODUCTION.md)
+
 ## 重点项目
 
 | 项目 | 问题 → 结果 | 工具 |
 | --- | --- | --- |
-| [早期职业人才与雇主对标](projects/early-career-talent) 🏆 | 帮 Accenture 改进面向早期职业人才的雇佣方案和招聘信息：对比 Booz Allen、Capgemini 的 505 条招聘广告和员工评价，提出两个试点方案。**2026 BU ABA 黑客松冠军团队** | Python、文本筛查、证据核对 |
+| [早期职业人才与雇主对标](projects/early-career-talent) 🏆 | 帮 Accenture 改进面向早期职业人才的雇佣方案和招聘信息：将 Accenture 与 Booz Allen、Capgemini 对标，分析 504 条招聘广告及 1,245 条员工评价（原始广告 505 条，排除 1 条），提出两个试点方案。**2026 BU ABA 黑客松冠军团队** | Python、文本筛查、证据核对 |
 | [黄金与比特币交易策略](research/gold-bitcoin-strategy) | 2022 美赛 C 题：在 VaR/CVaR 约束下配置资产，再用 EMA 信号交易，1,000 美元增长到 13,236 美元（2016–2021），最大回撤从 81% 降到 47% | Python、SciPy 优化、风险指标 |
 | [纽约 Murray Hill 房产交易](projects/nyc-property-analysis) | 比较 2020 年前后的交易：中位价下降，均价却上升；用 K-means 分出异常值；用 Welch t 检验比较建筑类型 | R、K-means、假设检验 |
 | [航空机队优化](research/airline-optimization) | 在 1.6 亿美元预算内选机型、排航线的整数规划：购买 6 + 4 架飞机，每天利润 163,600 美元 | MATLAB、LP / MILP |
