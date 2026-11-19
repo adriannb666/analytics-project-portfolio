@@ -36,8 +36,9 @@ Projects in business analytics, optimization, statistics and quantitative financ
 | [ICT strategy backtest](research/ad-market-research/02-ict-backtest) | 473 rule-based trades on two years of BTC 15m data: −57R after fees; before fees it performs no better than on random-walk prices |
 | [Bitcoin hour-of-day effect](research/ad-market-research/03-btc-hour-of-day) | US Eastern 5–6 pm carries about two-thirds of BTC's 2020–2026 log return (t = 4.97), but fees erase it as a trade |
 | [Leverage survival simulation](research/ad-market-research/04-leverage-survival) | 1.05 million random BTC positions: median life is 4.6 hours at 100x; 85% of 100x positions with the right 7-day direction are liquidated first |
+| [CME weekend gap test](research/ad-market-research/05-cme-gap) | 438 weekends: 96.8% of gaps fill, but a random line at the same distance is hit 96.6% of the time; the opposite level is reached first 59% of the time (p ≈ 0.0003) |
 
-All four studies, with code that re-downloads Binance public data, are in [`research/ad-market-research`](research/ad-market-research).
+All five studies, with code that re-downloads Binance public data, are in [`research/ad-market-research`](research/ad-market-research).
 
 Also included: the [TVEM Bands](projects/tvem-bands) TradingView indicator, a [B-SIM marketing case](projects/bsim-marketing), and supporting code ([Python](practice/python-fundamentals), [R regression](practice/r-regression), [indicator conversions](practice/indicator-conversions), [MATLAB](practice/matlab-image-arithmetic), a [résumé generator](tools/resume-generator)).
 
