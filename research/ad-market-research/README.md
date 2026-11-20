@@ -1,6 +1,6 @@
 # AD市场研究 · Market Research
 
-> **English summary.** Data studies on Bitcoin published on Zhihu (@阿德里安). Each folder has code that re-downloads Binance public market data and reproduces every number, the results, and the article figures. Highlights: a rule-based ICT strategy backtest (473 trades, −57R after fees; no better than on random-walk prices), an hour-of-day study (US Eastern 5–6 pm carries about two-thirds of BTC's 2020–2026 log return, t = 4.97), a 1.05-million-position leverage survival simulation (median life of a 100x position: 4.6 hours), and a test of the "CME gaps always fill" rule (they do 97% of the time, but so does a random line, and the opposite level is reached first more often).
+> **English summary.** Data studies on Bitcoin and US stocks published on Zhihu (@阿德里安). Each folder has code that re-downloads public market data (Binance, or Yahoo Finance for the S&P 500 study) and reproduces every number, the results, and the article figures. Highlights: a rule-based ICT strategy backtest (473 trades, −57R after fees; no better than on random-walk prices), an hour-of-day study (US Eastern 5–6 pm carries about two-thirds of BTC's 2020–2026 log return, t = 4.97), a 1.05-million-position leverage survival simulation (median life of a 100x position: 4.6 hours), a test of the "CME gaps always fill" rule (they do 97% of the time, but so does a random line, and the opposite level is reached first more often), and an S&P 500 Thanksgiving/Santa Claus rally test (1950–2025: real, p ≈ 0.0003, but faded since 2010).
 
 加密货币与美股的数据研究、回测代码和配图。每一篇研究一个文件夹，包含：
 
@@ -19,6 +19,7 @@
 | 03 | 2026-11-09 | [比特币一天里哪个小时最赚钱](03-btc-hour-of-day/) | 美东 17–18 点贡献了 2020 年以来约 2/3 的对数涨幅，t = 4.97；但扣手续费后无法直接交易 |
 | 04 | 2026-11-12 | [100 倍杠杆能活多久](04-leverage-survival/) | 105 万个随机仓位：100x 中位寿命 4.6 小时；7 天后方向看对的 100x 仓位里 85% 已提前爆仓 |
 | 05 | 2026-11-19 | [「CME 缺口必补」是真的吗](05-cme-gap/) | 96.8% 的缺口最终回补，但随机画的线也有 96.6%；反方向同距离位置先到的次数更多（237 : 163） |
+| 06 | 2026-11-19 | [「圣诞行情」是真的吗](06-thanksgiving-rally/) | 标普 500 年底最后 5 天 + 新年头 2 天平均 +1.25%，随机 7 天只有 +0.26%（p ≈ 0.0003）；但 2010 年后基本消失，「圣诞老人不来熊市就来」不成立 |
 
 ## 怎么复现
 
@@ -29,7 +30,7 @@ node backtest.mjs      # 首次运行会从币安下载数据到 data/（已在 
 python3 plot_bt.py     # 重新生成 figures/
 ```
 
-数据来自币安公开行情接口 `data-api.binance.vision`，不需要 API Key。
+数据来自币安公开行情接口 `data-api.binance.vision`（06 用的是 Yahoo Finance 标普 500 日线），不需要 API Key。
 
 ## 免责声明
 
