@@ -37,6 +37,7 @@ Projects in business analytics, optimization, statistics and quantitative financ
 | [Bitcoin hour-of-day effect](research/ad-market-research/03-btc-hour-of-day) | US Eastern 5–6 pm carries about two-thirds of BTC's 2020–2026 log return (t = 4.97), but fees erase it as a trade |
 | [Leverage survival simulation](research/ad-market-research/04-leverage-survival) | 1.05 million random BTC positions: median life is 4.6 hours at 100x; 85% of 100x positions with the right 7-day direction are liquidated first |
 | [CME weekend gap test](research/ad-market-research/05-cme-gap) | 438 weekends: 96.8% of gaps fill, but a random line at the same distance is hit 96.6% of the time; the opposite level is reached first 59% of the time (p ≈ 0.0003) |
+| [Thanksgiving / Santa Claus rally](research/ad-market-research/06-thanksgiving-rally) | S&P 500, 1950–2025: the 7-day Santa rally averages +1.25% vs +0.26% for random 7-day windows (p ≈ 0.0003), but it has faded since 2010 and "Santa fails → bear market" doesn't hold |
 
 All five studies, with code that re-downloads Binance public data, are in [`research/ad-market-research`](research/ad-market-research).
 
