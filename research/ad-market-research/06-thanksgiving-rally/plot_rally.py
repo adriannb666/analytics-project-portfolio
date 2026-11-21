@@ -105,7 +105,7 @@ for kk, mm, uu in zip(k, m, up):
     if -4 <= kk <= 2:
         ax.text(kk, mm + 0.01, f"{mm:+.2f}%\n涨 {uu*100:.0f}%", color="white", fontsize=10.5, ha="center", va="bottom")
 ax.axvline(0.5, color=GREY, lw=1, ls=":")
-ax.text(0.6, 0.36, "新年 →", color=GREY, fontsize=13)
+ax.text(0.6, -0.17, "新年 →", color=GREY, fontsize=13)
 ax.text(-1, 0.42, "圣诞行情 7 天：平均每天 +0.18%，是普通日子的 5 倍", color=UP, fontsize=15, weight="bold", ha="center")
 ax.set_xticks(k)
 ax.set_xticklabels([("最后\n一天" if x == 0 else ("新年\n第%d天" % x if x > 0 else str(x))) for x in k], fontsize=11, rotation=0)
@@ -177,6 +177,8 @@ style(ax)
 rng = np.random.default_rng(1)
 for i, (vals, c, name) in enumerate([(ok, UP, "圣诞行情出现了"), (fail, DN, "圣诞行情没出现")]):
     xs = i + rng.uniform(-0.18, 0.18, len(vals))
+    if i == 1:
+        failx = xs
     ax.scatter(xs, vals, s=70, color=c, alpha=0.85, edgecolor="white", linewidth=0.5)
     mv = np.mean(vals)
     ax.hlines(mv, i - 0.3, i + 0.3, color="white", lw=3)
@@ -188,7 +190,7 @@ ax.set_ylabel("下一整年涨跌幅 (%)", color=TXT, fontsize=13)
 ax.set_xlim(-0.5, 1.9)
 for yy, s, n in zip(Y, SA, NY):
     if n is not None and s <= 0 and (n < -30 or yy in (2023, 2024)):
-        ax.annotate(f"{yy + 1}年 {n:+.1f}%", (1, n), xytext=(1.3, n - (4 if n > 0 else -4)), color=TXT, fontsize=11.5,
+        ax.annotate(f"{yy + 1}年 {n:+.1f}%", (failx[fail.index(n)], n), xytext=(1.3, n - (4 if n > 0 else -4)), color=TXT, fontsize=11.5,
                     arrowprops=dict(arrowstyle="-", color=GREY))
 txt = ("没出现圣诞行情的 17 次里，\n第二年照样有 12 次上涨，\n平均 +6.7%。\n\n真正大跌的只有 3 次：\n1969 年 -11.4%、2000 年 -10.1%、\n2008 年 -38.5%。\n\n2023 年底、2024 年底\n圣诞行情都没来，\n第二年分别 +23.3% 和 +16.4%。")
 fig.text(0.72, 0.8, txt, color=TXT, fontsize=14, va="top", linespacing=1.5)
